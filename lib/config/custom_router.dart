@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sample/screens/splash/splash_screen.dart';
+import 'package:flutter_sample/screens/sample/sample_register.dart';
+
+import '../screens/sample/sample.dart';
+import '../screens/screens.dart';
+import '../screens/splash/splash_screen.dart';
 
 class CustomRouter {
   static Route onGenerateRoute(RouteSettings settings) {
@@ -12,6 +16,18 @@ class CustomRouter {
         break;
       case SplashScreen.routeName:
         return SplashScreen.route();
+        break;
+      case LoginScren.routeName:
+        return LoginScren.route();
+        break;
+      case NavScren.routeName:
+        return NavScren.route();
+        break;
+      case SampleScren.routeName:
+        return SampleScren.route();
+        break;
+      case SampleRegisterScren.routeName:
+        return SampleRegisterScren.route();
         break;
       default:
         return _errorRoute();

@@ -43,5 +43,10 @@
 	<false/>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Share photos and add profile images</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+	<string>en</string>
+	<string>nb</string>
+	</array>
 </dict>
 </plist>
