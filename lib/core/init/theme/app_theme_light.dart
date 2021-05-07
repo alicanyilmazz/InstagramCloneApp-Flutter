@@ -18,42 +18,185 @@ class AppThemeLight extends AppTheme with ILightTheme {
         colorScheme: _appColorScheme,
         textTheme: textTheme(),
         appBarTheme: ThemeData.light().appBarTheme.copyWith(
-            brightness: Brightness.light,
-            color: Colors.transparent,
-            elevation: 0,
-            iconTheme: IconThemeData(color: Colors.black87, size: 21)),
-        inputDecorationTheme: InputDecorationTheme(
-            focusColor: Colors.red,
-            labelStyle: TextStyle(),
-            fillColor: Colors.white,
-            contentPadding: EdgeInsets.zero,
-            filled: true,
-            enabledBorder:
-                OutlineInputBorder(borderSide: BorderSide(width: 0.3)),
-            border: OutlineInputBorder(borderSide: BorderSide(width: 0.3)),
-            focusedBorder: OutlineInputBorder()),
-        scaffoldBackgroundColor: Colors.deepOrange.shade300,
+              brightness: Brightness.light,
+              color: Colors.transparent,
+              elevation: 0,
+              iconTheme: IconThemeData(color: Colors.black87, size: 21),
+            ),
+        inputDecorationTheme: inputDecorationThemeModern(),
+        scaffoldBackgroundColor: Color(0xfffec051),
         floatingActionButtonTheme:
             ThemeData.light().floatingActionButtonTheme.copyWith(),
+        //Button Theme
         buttonTheme: ThemeData.light().buttonTheme.copyWith(
               colorScheme: ColorScheme.light(
-                onError: Color(0xffFF2D55),
+                primary: Color(0xfff44336),
+                primaryVariant: Color(0xffd32f2f),
+                secondary: Color(0xffC20003), //xx
+                secondaryVariant: Color(0xffd32f2f),
+                surface: Color(0xffffffff),
+                background: Color(0xffef9a9a),
+                error: Color(0xffd32f2f),
+                onPrimary: Color(0xffffffff), //xx
+                onSecondary: Color(0xff000000),
+                onSurface: Color(0xff000000),
+                onBackground: Color(0xffffffff),
+                onError: Color(0xffffffff),
+                brightness: Brightness.light,
+              ),
+              buttonColor: Color(0xffe0e0e0),
+              disabledColor: Color(0x61000000),
+              highlightColor: Color(0x29000000),
+              splashColor: Color(0x1f000000),
+              hoverColor: Color(0x0a000000),
+              focusColor: Color(0x1f000000),
+              //new features
+              shape: RoundedRectangleBorder(
+                side: BorderSide(
+                  color: Color(0xff000000),
+                  width: 0,
+                  style: BorderStyle.none,
+                ),
+                borderRadius: BorderRadius.all(Radius.circular(2.0)),
               ),
             ),
         tabBarTheme: tabBarTheme,
+
+        dividerColor: Color(0xffffffff),
+        highlightColor: Color(0x66bcbcbc),
+        splashColor: Color(0xffE8E8E8),
+        selectedRowColor: Color(0xfff5f5f5),
+        unselectedWidgetColor: Color(0x8a000000),
+        disabledColor: Color(0x61000000),
+        buttonColor: Color(0xffe0e0e0),
+        toggleableActiveColor: Color(0xffe53935),
+        secondaryHeaderColor: Color(0xffffebee),
+        toggleButtonsTheme: ToggleButtonsThemeData(
+            fillColor: Color(0xffC20003),
+            textStyle: TextStyle(color: Colors.white),
+            selectedColor: Colors.white),
+
+        dialogBackgroundColor: Color(0xffffffff),
+        cardColor: Color(0xfff0aa17),
+        indicatorColor: Color(0xffC20003), //XX
+        hintColor: Color(0x8a000000), //xx
+        errorColor: Color(0xffd32f2f),
       );
 
-  // InputDecoration get inputDecoration {
-  //   return InputDecoration(
-  //       border: InputBorder.none,
-  //       focusedBorder: InputBorder.none,
-  //       enabledBorder: InputBorder.none,
-  //       errorBorder: InputBorder.none,
-  //       disabledBorder: InputBorder.none,
-  //       contentPadding:
-  //           EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
-  //       hintText: "Hint here");
-  // }
+  InputDecorationTheme inputDecarationTheme() {
+    return InputDecorationTheme(
+      focusColor: Colors.amber,
+      labelStyle: TextStyle(),
+      fillColor: Colors.deepOrange.shade200,
+      contentPadding: EdgeInsets.zero,
+      filled: true,
+      enabledBorder: OutlineInputBorder(borderSide: BorderSide(width: 0.3)),
+      border: OutlineInputBorder(borderSide: BorderSide(width: 0.3)),
+      focusedBorder: OutlineInputBorder(),
+    );
+  }
+
+  InputDecorationTheme inputDecorationThemeModern() {
+    return InputDecorationTheme(
+      labelStyle: TextStyle(
+        color: Colors.red,
+        fontSize: null,
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ),
+      helperStyle: TextStyle(
+        color: Colors.green,
+        fontSize: null,
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ),
+      hintStyle: TextStyle(
+        color: colorSchemeLight.inputHintColor,
+        fontSize: null,
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ),
+      errorStyle: TextStyle(
+        color: colorSchemeLight.inputErrorTextColor,
+        fontSize: null,
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ),
+      errorMaxLines: null,
+      isDense: false,
+      contentPadding: EdgeInsets.only(top: 12, bottom: 12, left: 0, right: 0),
+      isCollapsed: false,
+      prefixStyle: TextStyle(
+          color: Colors.black,
+          fontSize: null,
+          fontWeight: FontWeight.w400,
+          fontStyle: FontStyle.normal,
+          decorationColor: Colors.amber),
+      suffixStyle: TextStyle(
+        color: Colors.black,
+        fontSize: null,
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ),
+      counterStyle: TextStyle(
+        color: Colors.black,
+        fontSize: null,
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ),
+      filled: false,
+      fillColor: Color(0x00000000),
+      errorBorder: UnderlineInputBorder(
+        borderSide: BorderSide(
+          color: colorSchemeLight.inputErrorColor,
+          width: 1,
+          style: BorderStyle.solid,
+        ),
+        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+      ),
+      focusedBorder: UnderlineInputBorder(
+        borderSide: BorderSide(
+          color: colorSchemeLight.inputFocusedColor,
+          width: 1,
+          style: BorderStyle.solid,
+        ),
+        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+      ),
+      focusedErrorBorder: UnderlineInputBorder(
+        borderSide: BorderSide(
+          color: colorSchemeLight.inputFocusedErrorColor,
+          width: 1,
+          style: BorderStyle.solid,
+        ),
+        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+      ),
+      disabledBorder: UnderlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.black,
+          width: 1,
+          style: BorderStyle.solid,
+        ),
+        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+      ),
+      //UnderLine Start
+      enabledBorder: UnderlineInputBorder(
+        borderSide: BorderSide(
+          color: colorSchemeLight.inputDefaultColor,
+          width: 1,
+          style: BorderStyle.solid,
+        ),
+        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+      ),
+      border: UnderlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.black,
+          width: 1,
+          style: BorderStyle.solid,
+        ),
+        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+      ),
+    );
+  }
 
   TabBarTheme get tabBarTheme {
     return TabBarTheme(
@@ -74,14 +217,15 @@ class AppThemeLight extends AppTheme with ILightTheme {
 
   ColorScheme get _appColorScheme {
     return ColorScheme(
-        primary: colorSchemeLight.black,
+        primary: colorSchemeLight
+            .white, //At the same time cursor color.,button color
         primaryVariant: Colors.white, //xx
-        secondary: Colors.green,
+        secondary: Colors.red,
         secondaryVariant: colorSchemeLight.azure,
-        surface: Colors.blue, //xx
+        surface: Colors.grey, //xx
         background: Color(0xfff6f9fc), //xx
         error: Colors.red[900],
-        onPrimary: Colors.greenAccent,
+        onPrimary: Colors.grey,
         onSecondary: Colors.black, //x
         onSurface: Colors.white30,
         onBackground: Colors.black12,
@@ -89,19 +233,3 @@ class AppThemeLight extends AppTheme with ILightTheme {
         brightness: Brightness.light);
   }
 }
-
-
-/*
-ThemeData(
-              primarySwatch: Colors.blue,
-              scaffoldBackgroundColor: Colors.grey[50],
-              appBarTheme: AppBarTheme(
-                  brightness: Brightness.light, color: Colors.white),
-              visualDensity: VisualDensity.adaptivePlatformDensity,
-              iconTheme: const IconThemeData(color: Colors.black),
-              textTheme: const TextTheme(
-                  headline6: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold))),
- */

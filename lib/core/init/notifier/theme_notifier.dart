@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sample/core/constant/enums/app_theme_enum.dart';
+import 'package:flutter_sample/core/init/theme/app_theme_dark.dart';
 import '../theme/app_theme_light.dart';
 
 class ThemeNotifier extends ChangeNotifier {
@@ -24,7 +25,7 @@ class ThemeNotifier extends ChangeNotifier {
   /// Change your app theme with [currentTheme] value.
   void changeTheme() {
     if (_currentThemeEnum == AppThemes.LIGHT) {
-      _currentTheme = ThemeData.dark();
+      _currentTheme = AppThemeDark.instance.theme;
       _currentThemeEnum = AppThemes.DARK;
     } else {
       _currentTheme = AppThemeLight.instance.theme;

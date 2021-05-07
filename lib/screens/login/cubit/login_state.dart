@@ -8,7 +8,13 @@ class LoginState extends Equatable {
   final LoginStatus status;
   final Failure failure;
 
-  const LoginState({this.email, this.password, this.status, this.failure});
+  bool get isFormValid => email.isNotEmpty && password.isNotEmpty;
+
+  const LoginState(
+      {@required this.email,
+      @required this.password,
+      @required this.status,
+      @required this.failure});
 
   factory LoginState.initial() {
     return LoginState(
@@ -24,4 +30,18 @@ class LoginState extends Equatable {
 
   @override
   List<Object> get props => [email, password, status, failure];
+
+  LoginState copyWith({
+    String email,
+    String password,
+    LoginStatus status,
+    Failure failure,
+  }) {
+    return LoginState(
+      email: email ?? this.email,
+      password: password ?? this.password,
+      status: status ?? this.status,
+      failure: failure ?? this.failure,
+    );
+  }
 }

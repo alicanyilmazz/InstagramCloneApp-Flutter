@@ -3,7 +3,7 @@ import 'padding_insets.dart';
 import 'text_theme_dark.dart';
 
 abstract class IDarkTheme {
-  TextThemeDark textThemeLight = TextThemeDark.instance;
-  ColorSchemeDark colorSchemeLight = ColorSchemeDark.instance;
+  TextThemeDark textThemeDark = TextThemeDark.instance;
+  ColorSchemeDark colorSchemeDark = ColorSchemeDark.instance;
   PaddingInsets insets = PaddingInsets();
 }

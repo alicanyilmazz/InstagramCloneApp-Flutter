@@ -30,8 +30,7 @@ final ThemeData redTheme = ThemeData(
   cursorColor: Color(0xff4285f4),
   textSelectionHandleColor: Color(0xffe57373),
   backgroundColor: Color(0xffef9a9a),
-  toggleButtonsTheme: ToggleButtonsThemeData(
-      fillColor: Color(0xffC20003), textStyle: TextStyle(color: Colors.white), selectedColor: Colors.white),
+  toggleButtonsTheme: ToggleButtonsThemeData(fillColor: Color(0xffC20003), textStyle: TextStyle(color: Colors.white), selectedColor: Colors.white),
   floatingActionButtonTheme: FloatingActionButtonThemeData(backgroundColor: Color(0xffC20003)),
 
   dialogBackgroundColor: Color(0xffffffff),
@@ -274,6 +273,7 @@ final ThemeData redTheme = ThemeData(
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
     ),
+    
     errorMaxLines: null,
     isDense: false,
     contentPadding: EdgeInsets.only(top: 12, bottom: 12, left: 0, right: 0),

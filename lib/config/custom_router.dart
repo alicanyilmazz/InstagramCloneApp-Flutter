@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sample/screens/sample/sample_register.dart';
 
-import '../screens/sample/sample.dart';
 import '../screens/screens.dart';
 import '../screens/splash/splash_screen.dart';
 
@@ -23,11 +21,18 @@ class CustomRouter {
       case NavScren.routeName:
         return NavScren.route();
         break;
-      case SampleScren.routeName:
-        return SampleScren.route();
+      case SignupScren.routeName:
+        return SignupScren.route();
         break;
-      case SampleRegisterScren.routeName:
-        return SampleRegisterScren.route();
+      default:
+        return _errorRoute();
+    }
+  }
+
+  static Route onGenerateNestedRoute(RouteSettings settings) {
+    switch (settings.name) {
+      case EditProfileScreen.routeName:
+        return EditProfileScreen.route(args: settings.arguments);
         break;
       default:
         return _errorRoute();
