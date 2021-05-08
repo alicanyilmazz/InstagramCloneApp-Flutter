@@ -98,9 +98,10 @@ class LoginScren extends StatelessWidget {
                               onChanged: (value) => context
                                   .read<LoginCubit>()
                                   .emailChanged(value),
-                              validator: (value) => !value.contains('@')
-                                  ? 'Please enter a valid email.'
-                                  : null,
+                              validator: (value) =>
+                                  !(value.trim()).contains('@')
+                                      ? 'Please enter a valid email.'
+                                      : null,
                             ),
                             const SizedBox(
                               height: 16.0,
@@ -156,7 +157,7 @@ class LoginScren extends StatelessWidget {
                                     MaterialStateProperty.all<Color>(
                                         Colors.black87),
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),
