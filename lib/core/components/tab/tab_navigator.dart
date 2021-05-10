@@ -4,7 +4,10 @@ import 'package:flutter_sample/blocs/auth/auth_bloc.dart';
 import 'package:flutter_sample/config/custom_router.dart';
 
 import 'package:flutter_sample/core/constant/enums/bottom_navbar_enum.dart';
+import 'package:flutter_sample/repositories/post/post_repository.dart';
+import 'package:flutter_sample/repositories/storage/storage_repository.dart';
 import 'package:flutter_sample/repositories/user/user_repository.dart';
+import 'package:flutter_sample/screens/post/cubit/create_post_cubit.dart';
 import 'package:flutter_sample/screens/profile/bloc/profile_bloc.dart';
 import 'package:flutter_sample/screens/screens.dart';
 
@@ -50,7 +53,14 @@ class TabNavigator extends StatelessWidget {
         return SearchScreen();
         break;
       case BottomNavItem.create:
-        return CreatePostScreen();
+        return BlocProvider<CreatePostCubit>(
+          create: (context) => CreatePostCubit(
+            postRepository: context.read<PostRepository>(),
+            storageRepository: context.read<StorageRepository>(),
+            authBloc: context.read<AuthBloc>()
+          ),
+          child: CreatePostScreen(),
+        );
         break;
       case BottomNavItem.notifications:
         return NotificationScreen();
@@ -60,7 +70,7 @@ class TabNavigator extends StatelessWidget {
           create: (_) => ProfileBloc(
             userRepository: context.read<UserRepository>(),
             authBloc: context.read<AuthBloc>(),
-          )..add(  
+          )..add(
               ProfileLoadUser(userId: context.read<AuthBloc>().state.user.uid)),
           child: ProfileScreen(),
         );
