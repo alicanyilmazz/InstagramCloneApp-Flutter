@@ -1,6 +1,8 @@
-# flutter_sample
+# Flutter Clone Instagram Project
 
-A new Flutter project.
+I will create a document about application architecture as soon as possible.
+
+![](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngwing.com%2Fen%2Ffree-png-hnzvd&psig=AOvVaw0clbMLuPqWeYs_h1PFgJGX&ust=1620986521267000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNj9l8ezxvACFQAAAAAdAAAAABAK)
 
 ## Getting Started
 
