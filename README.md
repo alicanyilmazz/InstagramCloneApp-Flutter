@@ -2,7 +2,7 @@
 
 I will create a document about application architecture as soon as possible.
 
-![](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngwing.com%2Fen%2Ffree-png-hnzvd&psig=AOvVaw0clbMLuPqWeYs_h1PFgJGX&ust=1620986521267000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNj9l8ezxvACFQAAAAAdAAAAABAK)
+![](https://spng.subpng.com/20180710/hul/kisspng-dart-programming-language-flutter-object-oriented-flutter-logo-5b454ed38607c1.934218061531268819549.jpg)
 
 ## Getting Started
 
