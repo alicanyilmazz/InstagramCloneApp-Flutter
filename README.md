@@ -1,4 +1,4 @@
-# Flutter Clone Instagram Project
+# Flutter Social Media Application Project
 
 I will create a document about application architecture as soon as possible.
 
