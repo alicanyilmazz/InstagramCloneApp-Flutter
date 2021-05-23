@@ -6,6 +6,10 @@ I will create a document about application architecture as soon as possible.
 
 ## Getting Started
 
+
+![flutter_firebase_bloc-overview](https://user-images.githubusercontent.com/49749125/119261638-f573af80-bbe0-11eb-9216-b0ee964a8698.png)
+
+
 This project is a starting point for a Flutter application.
 
 A few resources to get you started if this is your first Flutter project:
