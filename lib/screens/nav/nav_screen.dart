@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_sample/core/components/navbar/bottom_nav_bar.dart';
-import 'package:flutter_sample/core/components/tab/tab_navigator.dart';
-import 'package:flutter_sample/core/constant/enums/enums.dart';
-import 'package:flutter_sample/screens/nav/cubit/bottom_nav_bar_cubit.dart';
+import '../../core/components/navbar/bottom_nav_bar.dart';
+import '../../core/components/tab/tab_navigator.dart';
+import '../../core/constant/enums/enums.dart';
+import 'cubit/bottom_nav_bar_cubit.dart';
 
 class NavScren extends StatelessWidget {
   static const String routeName = '/nav';
@@ -44,11 +44,15 @@ class NavScren extends StatelessWidget {
           return Scaffold(
             body: Stack(
               children: items
-                  .map((item, _) => MapEntry(
+                  .map(
+                    (item, _) => MapEntry(
+                      item,
+                      _buildOffStageNavigator(
                         item,
-                        _buildOffStageNavigator(
-                            item, item == state.selectedItem),
-                      ))
+                        item == state.selectedItem,
+                      ),
+                    ),
+                  )
                   .values
                   .toList(),
             ),

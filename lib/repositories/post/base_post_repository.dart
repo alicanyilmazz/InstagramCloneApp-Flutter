@@ -1,4 +1,4 @@
-import 'package:flutter_sample/models/models.dart';
+import '../../models/models.dart';
 
 abstract class BasePostRepository {
   Future<void> createPost({Post post});

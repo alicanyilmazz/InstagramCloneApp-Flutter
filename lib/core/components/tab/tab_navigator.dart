@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_sample/blocs/auth/auth_bloc.dart';
-import 'package:flutter_sample/config/custom_router.dart';
+import '../../../blocs/auth/auth_bloc.dart';
+import '../../../config/custom_router.dart';
 
-import 'package:flutter_sample/core/constant/enums/bottom_navbar_enum.dart';
-import 'package:flutter_sample/repositories/post/post_repository.dart';
-import 'package:flutter_sample/repositories/storage/storage_repository.dart';
-import 'package:flutter_sample/repositories/user/user_repository.dart';
-import 'package:flutter_sample/screens/post/cubit/create_post_cubit.dart';
-import 'package:flutter_sample/screens/profile/bloc/profile_bloc.dart';
-import 'package:flutter_sample/screens/screens.dart';
+import '../../constant/enums/bottom_navbar_enum.dart';
+import '../../../repositories/post/post_repository.dart';
+import '../../../repositories/storage/storage_repository.dart';
+import '../../../repositories/user/user_repository.dart';
+import '../../../screens/post/cubit/create_post_cubit.dart';
+import '../../../screens/profile/bloc/profile_bloc.dart';
+import '../../../screens/screens.dart';
+import 'package:flutter_sample/screens/search/cubit/search_cubit.dart';
 
 class TabNavigator extends StatelessWidget {
   static const String tabNavigatorRoot = '/';
@@ -50,15 +51,18 @@ class TabNavigator extends StatelessWidget {
         return FeedScreen();
         break;
       case BottomNavItem.search:
-        return SearchScreen();
+        return BlocProvider<SearchCubit>(
+          create: (context) =>
+              SearchCubit(userRepository: context.read<UserRepository>()),
+          child: SearchScreen(),
+        );
         break;
       case BottomNavItem.create:
         return BlocProvider<CreatePostCubit>(
           create: (context) => CreatePostCubit(
-            postRepository: context.read<PostRepository>(),
-            storageRepository: context.read<StorageRepository>(),
-            authBloc: context.read<AuthBloc>()
-          ),
+              postRepository: context.read<PostRepository>(),
+              storageRepository: context.read<StorageRepository>(),
+              authBloc: context.read<AuthBloc>()),
           child: CreatePostScreen(),
         );
         break;
@@ -69,6 +73,7 @@ class TabNavigator extends StatelessWidget {
         return BlocProvider<ProfileBloc>(
           create: (_) => ProfileBloc(
             userRepository: context.read<UserRepository>(),
+            postRepository: context.read<PostRepository>(),
             authBloc: context.read<AuthBloc>(),
           )..add(
               ProfileLoadUser(userId: context.read<AuthBloc>().state.user.uid)),

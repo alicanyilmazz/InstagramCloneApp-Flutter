@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sample/core/constant/enums/app_theme_enum.dart';
-import 'package:flutter_sample/core/init/theme/app_theme_dark.dart';
+
+import '../../constant/enums/app_theme_enum.dart';
+import '../theme/app_theme_dark.dart';
 import '../theme/app_theme_light.dart';
 
 class ThemeNotifier extends ChangeNotifier {

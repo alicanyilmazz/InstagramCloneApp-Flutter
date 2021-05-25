@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_sample/core/constant/enums/app_theme_enum.dart';
-import 'package:flutter_sample/core/extensions/context_extension.dart';
-import 'package:flutter_sample/core/init/notifier/theme_notifier.dart';
-import 'package:flutter_sample/repositories/auth/auth_repository.dart';
+import '../../core/constant/enums/app_theme_enum.dart';
+import '../../core/extensions/context_extension.dart';
+import '../../core/init/notifier/theme_notifier.dart';
+import '../../repositories/auth/auth_repository.dart';
 import 'cubit/signup_cubit.dart';
 
 class SignupScren extends StatelessWidget {

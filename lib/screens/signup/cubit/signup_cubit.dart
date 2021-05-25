@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sample/models/failure_model.dart';
-import 'package:flutter_sample/repositories/auth/auth_repository.dart';
+import '../../../models/failure_model.dart';
+import '../../../repositories/auth/auth_repository.dart';
 
 part 'signup_state.dart';
 

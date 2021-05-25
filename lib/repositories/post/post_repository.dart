@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sample/config/paths.dart';
-import 'package:flutter_sample/models/post_model.dart';
-import 'package:flutter_sample/models/comment_model.dart';
-import 'package:flutter_sample/repositories/post/base_post_repository.dart';
+import '../../config/paths.dart';
+import '../../models/post_model.dart';
+import '../../models/comment_model.dart';
+import 'base_post_repository.dart';
 
 class PostRepository extends BasePostRepository {
   final FirebaseFirestore _firebaseFirestore;

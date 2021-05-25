@@ -4,9 +4,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_sample/core/init/notifier/theme_notifier.dart';
-import 'package:flutter_sample/repositories/repositories.dart';
-// import 'package:flutter_sample/repositories/user/user_repository.dart';
+import 'core/init/notifier/theme_notifier.dart';
+import 'repositories/repositories.dart';
+
 import 'package:provider/provider.dart';
 
 import 'blocs/auth/auth_bloc.dart';
@@ -45,15 +45,13 @@ class MyApp extends StatelessWidget {
       providers: [
         RepositoryProvider<AuthRepository>(create: (_) => AuthRepository()),
         RepositoryProvider<UserRepository>(create: (_) => UserRepository()),
-        RepositoryProvider<StorageRepository>(
-            create: (_) => StorageRepository()),
+        RepositoryProvider<StorageRepository>(create: (_) => StorageRepository()),
         RepositoryProvider<PostRepository>(create: (_) => PostRepository()),
       ],
       child: MultiBlocProvider(
         providers: [
           BlocProvider<AuthBloc>(
-            create: (context) =>
-                AuthBloc(authRepository: context.read<AuthRepository>()),
+            create: (context) =>AuthBloc(authRepository: context.read<AuthRepository>()),
           ),
         ],
         child: MaterialApp(
@@ -70,3 +68,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+  

@@ -2,16 +2,15 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_sample/core/components/dialog/error_dialog.dart';
-import 'package:flutter_sample/core/components/image/user_profile_image.dart';
-import 'package:flutter_sample/core/utilities/helpers/helpers.dart';
-import 'package:flutter_sample/models/models.dart';
-import 'package:flutter_sample/repositories/repositories.dart';
+import '../../core/components/dialog/error_dialog.dart';
+import '../../core/components/image/user_profile_image.dart';
+import '../../core/utilities/helpers/helpers.dart';
+import '../../models/models.dart';
+import '../../repositories/repositories.dart';
 
 import 'package:flutter_sample/screens/edit_profile/cubit/editprofile_cubit.dart';
 import 'package:flutter_sample/screens/profile/bloc/profile_bloc.dart';
 import 'package:image_cropper/image_cropper.dart';
-
 
 class EditProfileScreenArgs {
   final BuildContext context;
@@ -158,9 +157,7 @@ class EditProfileScreen extends StatelessWidget {
       title: 'Profile Image',
     );
     if (pickedFile != null) {
-      context
-          .read<EditprofileCubit>()
-          .profileImageChanged(File(pickedFile.path));
+      context.read<EditprofileCubit>().profileImageChanged(pickedFile);
     }
   }
 

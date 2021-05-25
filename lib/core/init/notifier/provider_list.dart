@@ -1,4 +1,4 @@
-import 'package:flutter_sample/core/init/notifier/theme_notifier.dart';
+import 'theme_notifier.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 

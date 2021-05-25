@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sample/repositories/storage/base_storage_repository.dart';
+import 'base_storage_repository.dart';
 import 'package:uuid/uuid.dart';
 
 class StorageRepository extends BaseStorageRepository {

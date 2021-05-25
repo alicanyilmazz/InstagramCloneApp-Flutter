@@ -31,6 +31,9 @@ class CustomRouter {
 
   static Route onGenerateNestedRoute(RouteSettings settings) {
     switch (settings.name) {
+      case ProfileScreen.routeName:
+        return ProfileScreen.route(args: settings.arguments);
+        break;
       case EditProfileScreen.routeName:
         return EditProfileScreen.route(args: settings.arguments);
         break;

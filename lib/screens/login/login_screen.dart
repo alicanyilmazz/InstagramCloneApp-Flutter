@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_sample/core/components/dialog/error_dialog.dart';
-import 'package:flutter_sample/core/constant/enums/app_theme_enum.dart';
-import 'package:flutter_sample/core/extensions/context_extension.dart';
-import 'package:flutter_sample/core/init/notifier/theme_notifier.dart';
-import 'package:flutter_sample/repositories/auth/auth_repository.dart';
-import 'package:flutter_sample/screens/login/cubit/login_cubit.dart';
-import 'package:flutter_sample/screens/screens.dart';
+import '../../core/components/dialog/error_dialog.dart';
+import '../../core/constant/enums/app_theme_enum.dart';
+import '../../core/extensions/context_extension.dart';
+import '../../core/init/notifier/theme_notifier.dart';
+import '../../repositories/auth/auth_repository.dart';
+import 'cubit/login_cubit.dart';
+import '../screens.dart';
 
 class LoginScren extends StatelessWidget {
   static const String routeName = '/login';

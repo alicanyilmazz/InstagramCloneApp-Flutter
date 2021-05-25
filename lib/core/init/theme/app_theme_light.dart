@@ -69,7 +69,7 @@ class AppThemeLight extends AppTheme with ILightTheme {
         unselectedWidgetColor: Color(0x8a000000),
         disabledColor: Color(0x61000000),
         buttonColor: Color(0xffe0e0e0),
-        toggleableActiveColor: Color(0xffe53935),
+        toggleableActiveColor: Colors.pink.shade900,
         secondaryHeaderColor: Color(0xffffebee),
         toggleButtonsTheme: ToggleButtonsThemeData(
             fillColor: Color(0xffC20003),
@@ -220,7 +220,7 @@ class AppThemeLight extends AppTheme with ILightTheme {
         primary: colorSchemeLight
             .white, //At the same time cursor color.,button color
         primaryVariant: Colors.white, //xx
-        secondary: Colors.red,
+        secondary: Colors.black38,
         secondaryVariant: colorSchemeLight.azure,
         surface: Colors.grey, //xx
         background: Color(0xfff6f9fc), //xx

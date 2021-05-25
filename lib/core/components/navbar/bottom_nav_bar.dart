@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sample/core/constant/enums/enums.dart';
+import '../../constant/enums/enums.dart';
 
 class BottomNavBar extends StatelessWidget {
   final Map<BottomNavItem, IconData> items;

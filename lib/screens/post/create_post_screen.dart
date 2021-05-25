@@ -1,9 +1,12 @@
 import 'dart:io';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_sample/core/components/dialog/error_dialog.dart';
-import 'package:flutter_sample/screens/post/cubit/create_post_cubit.dart';
+import '../../core/components/dialog/error_dialog.dart';
+import '../../core/utilities/helpers/helpers.dart';
+import 'cubit/create_post_cubit.dart';
+import 'package:image_cropper/image_cropper.dart';
 
 class CreatePostScreen extends StatelessWidget {
   static const String routeName = '/createpost';
@@ -47,16 +50,16 @@ class CreatePostScreen extends StatelessWidget {
                     child: Container(
                       height: MediaQuery.of(context).size.height / 2,
                       width: double.infinity,
-                      color: Colors.green.shade200,
+                      color: Colors.black12,
                       child: state.postImage != null
                           ? Image.file(
                               state.postImage,
                               fit: BoxFit.cover,
                             )
                           : Icon(
-                              Icons.image,
-                              color: Colors.grey,
-                              size: 120.0,
+                              Icons.image_outlined,
+                              size: 90.0,
+                              color: Colors.white30,
                             ),
                     ),
                   ),
@@ -107,7 +110,23 @@ class CreatePostScreen extends StatelessWidget {
     );
   }
 
-  void _selectPostImage(BuildContext context) {}
+  void _selectPostImage(BuildContext context) async {
+    // final pickedFile =await ImagePicker().getImage(source: ImageSource.gallery);  //standart image picker code if you do not want to user external ImagePicker package on this app.
+    final pickedFile = await ImageHelper.pickImageFromGallery(
+      context: context,
+      cropStyle: CropStyle.rectangle,
+      title: 'Create Post',
+    );
+    if (pickedFile != null) {
+      context.read<CreatePostCubit>().postImageChanged(pickedFile);
+    }
+  }
 
-  void _submitForm(BuildContext context, File postImage, bool isSubmitting) {}
+  void _submitForm(BuildContext context, File postImage, bool isSubmitting) {
+    if (_formKey.currentState.validate() &&
+        postImage != null &&
+        !isSubmitting) {
+      context.read<CreatePostCubit>().submit();
+    }
+  }
 }

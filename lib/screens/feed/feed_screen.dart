@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sample/core/init/notifier/theme_notifier.dart';
+import '../../core/init/notifier/theme_notifier.dart';
 import 'package:provider/provider.dart';
 
 class FeedScreen extends StatelessWidget {

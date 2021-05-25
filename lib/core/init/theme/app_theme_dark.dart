@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sample/core/constant/app/app_constant.dart';
+import '../../constant/app/app_constant.dart';
 import 'app_theme.dart';
 import 'dark/dark_theme_interface.dart';
 

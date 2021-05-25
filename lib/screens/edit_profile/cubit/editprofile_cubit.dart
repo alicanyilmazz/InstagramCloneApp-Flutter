@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter_sample/models/models.dart';
-import 'package:flutter_sample/repositories/repositories.dart';
-import 'package:flutter_sample/screens/profile/bloc/profile_bloc.dart';
+import '../../../models/models.dart';
+import '../../../repositories/repositories.dart';
+import '../../profile/bloc/profile_bloc.dart';
 import 'package:meta/meta.dart';
 
 part 'editprofile_state.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sample/screens/screens.dart';
+import '../../screens.dart';
 
 class ProfileButton extends StatelessWidget {
   final bool isCurrentUser;
