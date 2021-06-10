@@ -31,11 +31,11 @@ class ProfileStats extends StatelessWidget {
                 label: 'posts',
               ),
               _Stats(
-                count: posts,
+                count: followers,
                 label: 'followers',
               ),
               _Stats(
-                count: posts,
+                count: following,
                 label: 'following',
               ),
             ],

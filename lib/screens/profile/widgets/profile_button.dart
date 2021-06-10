@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../screens.dart';
+import '../bloc/profile_bloc.dart';
 
 class ProfileButton extends StatelessWidget {
   final bool isCurrentUser;
@@ -30,7 +33,9 @@ class ProfileButton extends StatelessWidget {
             ),
           )
         : ElevatedButton(
-            onPressed: () {},
+            onPressed: () => isFollowing
+                ? context.read<ProfileBloc>().add(ProfileUnfollowUser())
+                : context.read<ProfileBloc>().add(ProfileFollowUser()),
             style: ElevatedButton.styleFrom(
               primary:
                   isFollowing ? Colors.grey.shade300 : Colors.blue.shade400,

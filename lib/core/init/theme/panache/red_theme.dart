@@ -26,9 +26,7 @@ final ThemeData redTheme = ThemeData(
   buttonColor: Color(0xffe0e0e0),
   toggleableActiveColor: Color(0xffe53935),
   secondaryHeaderColor: Color(0xffffebee),
-  textSelectionColor: Color(0xffef9a9a),
-  cursorColor: Color(0xff4285f4),
-  textSelectionHandleColor: Color(0xffe57373),
+
   backgroundColor: Color(0xffef9a9a),
   toggleButtonsTheme: ToggleButtonsThemeData(fillColor: Color(0xffC20003), textStyle: TextStyle(color: Colors.white), selectedColor: Colors.white),
   floatingActionButtonTheme: FloatingActionButtonThemeData(backgroundColor: Color(0xffC20003)),

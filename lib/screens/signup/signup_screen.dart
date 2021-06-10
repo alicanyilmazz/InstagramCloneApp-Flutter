@@ -20,7 +20,7 @@ class SignupScren extends StatelessWidget {
     );
   }
 
-  final GlobalKey<FormState> _SignupFormKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _signupFormKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +65,7 @@ class SignupScren extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(24.0),
                       child: Form(
-                        key: _SignupFormKey,
+                        key: _signupFormKey,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -187,7 +187,7 @@ class SignupScren extends StatelessWidget {
   }
 
   _submitForm(BuildContext context, bool isSubmitting) {
-    if (_SignupFormKey.currentState.validate() && !isSubmitting) {
+    if (_signupFormKey.currentState.validate() && !isSubmitting) {
       context.read<SignupCubit>().signUpWithCredentials();
     }
   }

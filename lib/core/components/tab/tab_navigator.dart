@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_sample/cubits/cubits.dart';
+import 'package:flutter_sample/screens/feed/bloc/feed_bloc.dart';
 import '../../../blocs/auth/auth_bloc.dart';
 import '../../../config/custom_router.dart';
 
@@ -48,7 +50,14 @@ class TabNavigator extends StatelessWidget {
   Widget _getScreen(BuildContext context, BottomNavItem item) {
     switch (item) {
       case BottomNavItem.feed:
-        return FeedScreen();
+        return BlocProvider<FeedBloc>(
+          create: (context) => FeedBloc(
+            postRepository: context.read<PostRepository>(),
+            authBloc: context.read<AuthBloc>(),
+            likedPostsCubit: context.read<LikedPostsCubit>(),
+          )..add(FeedFetchPosts()),
+          child: FeedScreen(),
+        );
         break;
       case BottomNavItem.search:
         return BlocProvider<SearchCubit>(
@@ -74,6 +83,7 @@ class TabNavigator extends StatelessWidget {
           create: (_) => ProfileBloc(
             userRepository: context.read<UserRepository>(),
             postRepository: context.read<PostRepository>(),
+            likedPostsCubit: context.read<LikedPostsCubit>(),
             authBloc: context.read<AuthBloc>(),
           )..add(
               ProfileLoadUser(userId: context.read<AuthBloc>().state.user.uid)),

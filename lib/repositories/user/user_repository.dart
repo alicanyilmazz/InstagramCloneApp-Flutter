@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-
-import 'package:flutter_sample/config/paths.dart';
-import 'package:flutter_sample/models/user_model.dart';
 import 'package:meta/meta.dart';
+
+import '../../config/paths.dart';
+import '../../models/user_model.dart';
 import 'base_user_repository.dart';
 
 class UserRepository extends BaseUserRepository {
@@ -33,5 +33,57 @@ class UserRepository extends BaseUserRepository {
         .where('username', isGreaterThanOrEqualTo: query)
         .get();
     return userSnap.docs.map((doc) => User.fromDocument(doc)).toList();
+  }
+
+  @override
+  void followUser({@required String userId, @required String followUserId}) {
+    // Add followUser to users's userFollowing.
+    _firebaseFirestore
+        .collection(Paths.following)
+        .doc(userId)
+        .collection(Paths.userFollowing)
+        .doc(followUserId)
+        .set({});
+    // Add user to followUser's userFollowers.
+    _firebaseFirestore
+        .collection(Paths.followers)
+        .doc(followUserId)
+        .collection(Paths.userFollowers)
+        .doc(userId)
+        .set({});
+  }
+
+  @override
+  Future<bool> isFollowing(
+      {@required String userId, @required String otherUserId}) async {
+    // is otherUser in user's userFollowing
+    final otherUserDoc = await _firebaseFirestore
+        .collection(Paths.following)
+        .doc(userId)
+        .collection(Paths.userFollowing)
+        .doc(otherUserId)
+        .get();
+
+    return otherUserDoc.exists;
+  }
+
+  @override
+  void unfollowUser(
+      {@required String userId, @required String unfollowUserId}) {
+    //Remove unfollowUser from user's userFollowing.
+    _firebaseFirestore
+        .collection(Paths.following)
+        .doc(userId)
+        .collection(Paths.userFollowing)
+        .doc(unfollowUserId)
+        .delete();
+
+    //Remove user from unfollowUser's userFollowers.
+    _firebaseFirestore
+        .collection(Paths.followers)
+        .doc(unfollowUserId)
+        .collection(Paths.userFollowers)
+        .doc(userId)
+        .delete();
   }
 }

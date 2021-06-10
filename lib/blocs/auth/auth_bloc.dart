@@ -15,7 +15,7 @@ part 'auth_state.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthRepository _authRepository;
   StreamSubscription<auth.User> _userSubscription;
-
+ 
   AuthBloc({@required AuthRepository authRepository}) : _authRepository = authRepository, super(AuthState.unknown()) {
     _userSubscription =_authRepository.user.listen((user) => add(AuthUserChanged(user: user)));
   }
