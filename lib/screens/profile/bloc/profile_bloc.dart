@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sample/cubits/cubits.dart';
 
 import '../../../blocs/blocs.dart';
+import '../../../cubits/cubits.dart';
 import '../../../models/models.dart';
 import '../../../repositories/repositories.dart';
 
@@ -72,7 +72,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         final allPosts = await Future.wait(post);
         add(ProfileUpdatePosts(posts: allPosts));
       });
-
       yield state.copyWith(
         user: user,
         isCurrentUser: isCurrentUser,

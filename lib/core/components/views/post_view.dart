@@ -73,7 +73,12 @@ class PostView extends StatelessWidget {
                 Icons.comment_outlined,
                 color: Colors.black54,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed(
+                  CommentsScreen.routeName,
+                  arguments: CommentsScreenArgs(post: post),
+                );
+              },
             ),
           ],
         ),

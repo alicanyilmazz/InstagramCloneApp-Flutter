@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sample/blocs/auth/auth_bloc.dart';
-import 'package:flutter_sample/models/models.dart';
-import 'package:flutter_sample/repositories/post/post_repository.dart';
+import '../../blocs/auth/auth_bloc.dart';
+import '../../models/models.dart';
+import '../../repositories/post/post_repository.dart';
 
 part 'liked_posts_state.dart';
 

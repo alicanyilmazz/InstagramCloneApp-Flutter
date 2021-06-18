@@ -8,8 +8,8 @@ import '../../core/utilities/helpers/helpers.dart';
 import '../../models/models.dart';
 import '../../repositories/repositories.dart';
 
-import 'package:flutter_sample/screens/edit_profile/cubit/editprofile_cubit.dart';
-import 'package:flutter_sample/screens/profile/bloc/profile_bloc.dart';
+import 'cubit/editprofile_cubit.dart';
+import '../profile/bloc/profile_bloc.dart';
 import 'package:image_cropper/image_cropper.dart';
 
 class EditProfileScreenArgs {

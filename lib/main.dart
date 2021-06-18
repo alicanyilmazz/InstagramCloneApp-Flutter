@@ -4,7 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_sample/cubits/cubits.dart';
+import 'cubits/cubits.dart';
 import 'core/init/notifier/theme_notifier.dart';
 import 'repositories/repositories.dart';
 

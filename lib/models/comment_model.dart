@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter_sample/config/paths.dart';
+import '../config/paths.dart';
 import 'package:meta/meta.dart';
 
-import 'package:flutter_sample/models/user_model.dart';
+import 'user_model.dart';
 
 class Comment extends Equatable {
   final String id;

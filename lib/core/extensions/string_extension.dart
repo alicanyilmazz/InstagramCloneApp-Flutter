@@ -1,5 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter_sample/core/constant/app/app_constant.dart';
+import '../constant/app/app_constant.dart';
 
 
 extension StringLocalization on String {

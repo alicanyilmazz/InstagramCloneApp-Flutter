@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../core/components/dialog/error_dialog.dart';
-import '../../core/constant/enums/app_theme_enum.dart';
 import '../../core/extensions/context_extension.dart';
-import '../../core/init/notifier/theme_notifier.dart';
 import '../../repositories/auth/auth_repository.dart';
 import 'cubit/login_cubit.dart';
 import '../screens.dart';
+import 'package:provider/provider.dart';
 
 class LoginScren extends StatelessWidget {
   static const String routeName = '/login';
@@ -46,16 +45,7 @@ class LoginScren extends StatelessWidget {
           builder: (context, state) {
             return Scaffold(
               appBar: AppBar(
-                actions: [
-                  IconButton(
-                      icon: context.watch<ThemeNotifier>().currentThemeEnum ==
-                              AppThemes.LIGHT
-                          ? Icon(Icons.nightlight_round)
-                          : Icon(Icons.wb_sunny),
-                      onPressed: () {
-                        context.read<ThemeNotifier>().changeTheme();
-                      }),
-                ],
+                actions: [],
               ),
               resizeToAvoidBottomInset: false,
               body: Center(

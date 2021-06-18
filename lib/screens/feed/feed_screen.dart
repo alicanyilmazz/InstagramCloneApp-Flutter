@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_sample/core/components/dialog/error_dialog.dart';
-import 'package:flutter_sample/core/components/views/post_view.dart';
-import 'package:flutter_sample/cubits/cubits.dart';
-import 'package:flutter_sample/screens/feed/bloc/feed_bloc.dart';
+import '../../core/components/dialog/error_dialog.dart';
+import '../../core/components/views/post_view.dart';
+import '../../cubits/cubits.dart';
+import 'bloc/feed_bloc.dart';
 
 class FeedScreen extends StatefulWidget {
   static const String routeName = '/feed';

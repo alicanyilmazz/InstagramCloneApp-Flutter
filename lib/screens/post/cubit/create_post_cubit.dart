@@ -3,12 +3,12 @@ import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sample/blocs/blocs.dart';
+import '../../../blocs/blocs.dart';
 
-import 'package:flutter_sample/models/failure_model.dart';
-import 'package:flutter_sample/models/models.dart';
-import 'package:flutter_sample/repositories/post/post_repository.dart';
-import 'package:flutter_sample/repositories/storage/storage_repository.dart';
+import '../../../models/failure_model.dart';
+import '../../../models/models.dart';
+import '../../../repositories/post/post_repository.dart';
+import '../../../repositories/storage/storage_repository.dart';
 
 part 'create_post_state.dart';
 

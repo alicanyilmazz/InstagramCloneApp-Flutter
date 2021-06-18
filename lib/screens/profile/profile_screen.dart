@@ -1,7 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_sample/cubits/cubits.dart';
+import 'package:flutter_sample/screens/comments/comments_screen.dart';
+import '../../core/constant/enums/app_theme_enum.dart';
+import '../../core/init/notifier/theme_notifier.dart';
+import '../../cubits/cubits.dart';
 import '../../blocs/auth/auth_bloc.dart';
 import '../../core/components/dialog/error_dialog.dart';
 import '../../core/components/image/user_profile_image.dart';
@@ -84,7 +87,15 @@ class _ProfileScreenState extends State<ProfileScreen>
                     context.read<AuthBloc>().add(AuthLogoutRequested());
                     context.read<LikedPostsCubit>().clearAllLikedPosts();
                   },
-                )
+                ),
+              IconButton(
+                  icon: context.watch<ThemeNotifier>().currentThemeEnum ==
+                          AppThemes.LIGHT
+                      ? Icon(Icons.nightlight_round)
+                      : Icon(Icons.wb_sunny),
+                  onPressed: () {
+                    context.read<ThemeNotifier>().changeTheme();
+                  })
             ],
           ),
           body: _buildBody(state, context),
@@ -165,7 +176,10 @@ class _ProfileScreenState extends State<ProfileScreen>
                         (context, index) {
                           final post = state.posts[index];
                           return GestureDetector(
-                            onTap: () {},
+                            onTap: () => Navigator.of(context).pushNamed(
+                              CommentsScreen.routeName,
+                              arguments: CommentsScreenArgs(post: post),
+                            ),
                             child: CachedNetworkImage(
                               imageUrl: post.imageUrl,
                               fit: BoxFit.cover,
@@ -183,16 +197,22 @@ class _ProfileScreenState extends State<ProfileScreen>
                       delegate: SliverChildBuilderDelegate(
                         (context, index) {
                           final post = state.posts[index];
-                          final likedPostsState = context.watch<LikedPostsCubit>().state;
-                          final isLiked = likedPostsState.likedPostIds.contains(post.id);
+                          final likedPostsState =
+                              context.watch<LikedPostsCubit>().state;
+                          final isLiked =
+                              likedPostsState.likedPostIds.contains(post.id);
                           return PostView(
                             post: post,
                             isLiked: isLiked,
                             onlike: () {
                               if (isLiked) {
-                                context.read<LikedPostsCubit>().unlikePost(post: post);
-                              }else{
-                                 context.read<LikedPostsCubit>().likePost(post: post);
+                                context
+                                    .read<LikedPostsCubit>()
+                                    .unlikePost(post: post);
+                              } else {
+                                context
+                                    .read<LikedPostsCubit>()
+                                    .likePost(post: post);
                               }
                             },
                           );

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_sample/cubits/cubits.dart';
-import 'package:flutter_sample/screens/feed/bloc/feed_bloc.dart';
+import '../../../cubits/cubits.dart';
+import '../../../screens/feed/bloc/feed_bloc.dart';
 import '../../../blocs/auth/auth_bloc.dart';
 import '../../../config/custom_router.dart';
 
@@ -12,7 +12,7 @@ import '../../../repositories/user/user_repository.dart';
 import '../../../screens/post/cubit/create_post_cubit.dart';
 import '../../../screens/profile/bloc/profile_bloc.dart';
 import '../../../screens/screens.dart';
-import 'package:flutter_sample/screens/search/cubit/search_cubit.dart';
+import '../../../screens/search/cubit/search_cubit.dart';
 
 class TabNavigator extends StatelessWidget {
   static const String tabNavigatorRoot = '/';

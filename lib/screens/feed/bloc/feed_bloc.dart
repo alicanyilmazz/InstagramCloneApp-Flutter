@@ -3,11 +3,11 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sample/blocs/auth/auth_bloc.dart';
-import 'package:flutter_sample/cubits/liked_posts/liked_posts_cubit.dart';
-import 'package:flutter_sample/models/failure_model.dart';
-import 'package:flutter_sample/models/models.dart';
-import 'package:flutter_sample/repositories/repositories.dart';
+import '../../../blocs/auth/auth_bloc.dart';
+import '../../../cubits/liked_posts/liked_posts_cubit.dart';
+import '../../../models/failure_model.dart';
+import '../../../models/models.dart';
+import '../../../repositories/repositories.dart';
 
 part 'feed_event.dart';
 part 'feed_state.dart';
@@ -72,7 +72,8 @@ class FeedBloc extends Bloc<FeedEvent, FeedState> {
     } catch (error) {
       yield state.copyWith(
           status: FeedStatus.error,
-          failure: const Failure(message: 'We were unable to load your feed!'));
+          failure: const Failure(
+              message: 'We were unable to load your paginate feed!'));
     }
   }
 }
