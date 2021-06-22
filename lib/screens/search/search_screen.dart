@@ -51,7 +51,7 @@ class _SearchScreenState extends State<SearchScreen> {
             textAlignVertical: TextAlignVertical.center,
             onSubmitted: (value) {
               if (value.trim().isNotEmpty) {
-                context.read<SearchCubit>().searchUsers(value.trim());
+                context.read<SearchCubit>().searchUsers(value.trim().toLowerCase());
               }
             },
           ),

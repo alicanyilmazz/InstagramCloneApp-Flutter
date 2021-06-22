@@ -121,8 +121,8 @@ class PostRepository extends BasePostRepository {
         .doc(userId)
         .set({});
 
-      final notification = Notif(
-      type: NotificationType.comment,
+    final notification = Notif(
+      type: NotificationType.like,
       fromUser: User.empty.copyWith(id: userId),
       post: post,
       date: DateTime.now(),

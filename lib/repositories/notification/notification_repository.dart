@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_sample/config/paths.dart';
 import 'package:flutter_sample/models/notification_model.dart';
 import 'package:flutter_sample/repositories/notification/base_notification_repository.dart';
@@ -10,7 +11,7 @@ class NotificationRepository extends BaseNotificationRepository {
       : _firebaseFirestore = firebaseFirestore ?? FirebaseFirestore.instance;
 
   @override
-  Stream<List<Future<Notif>>> getUserNotifications({String userId}) {
+  Stream<List<Future<Notif>>> getUserNotifications({@required String userId}) {
     return _firebaseFirestore
         .collection(Paths.notifications)
         .doc(userId)
@@ -18,6 +19,7 @@ class NotificationRepository extends BaseNotificationRepository {
         .orderBy('date', descending: true)
         .snapshots()
         .map(
-            (snap) => snap.docs.map((doc) => Notif.fromDocument(doc)).toList());
+          (snap) => snap.docs.map((doc) => Notif.fromDocument(doc)).toList(),
+        );
   }
 }

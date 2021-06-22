@@ -44,16 +44,7 @@ class SignupScren extends StatelessWidget {
           builder: (context, state) {
             return Scaffold(
               appBar: AppBar(
-                actions: [
-                  IconButton(
-                      icon: context.watch<ThemeNotifier>().currentThemeEnum ==
-                              AppThemes.LIGHT
-                          ? Icon(Icons.nightlight_round)
-                          : Icon(Icons.wb_sunny),
-                      onPressed: () {
-                        context.read<ThemeNotifier>().changeTheme();
-                      }),
-                ],
+                actions: [],
               ),
               resizeToAvoidBottomInset: false,
               body: Center(
@@ -95,7 +86,7 @@ class SignupScren extends StatelessWidget {
                               ),
                               onChanged: (value) => context
                                   .read<SignupCubit>()
-                                  .usernameChanged(value),
+                                  .usernameChanged(value.trim().toLowerCase()),
                               validator: (value) => value.trim().isEmpty
                                   ? 'Username is not empty.'
                                   : null,
@@ -115,7 +106,7 @@ class SignupScren extends StatelessWidget {
                               ),
                               onChanged: (value) => context
                                   .read<SignupCubit>()
-                                  .emailChanged(value),
+                                  .emailChanged(value.trim().toLowerCase()),
                               validator: (value) => !value.contains('@')
                                   ? 'Please enter a valid email.'
                                   : null,
@@ -136,7 +127,7 @@ class SignupScren extends StatelessWidget {
                               obscureText: true,
                               onChanged: (value) => context
                                   .read<SignupCubit>()
-                                  .passwordChanged(value),
+                                  .passwordChanged(value.trim()),
                               validator: (value) => value.length < 6
                                   ? 'Must be et least 6 characters.'
                                   : null,

@@ -43,9 +43,9 @@ class Notif extends Equatable {
   }
 
   Map<String, dynamic> toDocument() {
-    final notificationType = EnumToString.convertToString(type);
+    final notifType = EnumToString.convertToString(type);
     return {
-      'type': notificationType,
+      'type': notifType,
       'fromUser':
           FirebaseFirestore.instance.collection(Paths.users).doc(fromUser.id),
       'post': post != null
@@ -56,19 +56,16 @@ class Notif extends Equatable {
   }
 
   static Future<Notif> fromDocument(DocumentSnapshot doc) async {
-    if (doc == null) {
-      return null;
-    }
+    if (doc == null) return null;
     final data = doc.data();
-    final notificationType =
-        EnumToString.fromString(NotificationType.values, doc['type']);
+    final notifType = EnumToString.fromString(NotificationType.values, data['type']);
 
-    //From User
+    // From User
     final fromUserRef = data['fromUser'] as DocumentReference;
     if (fromUserRef != null) {
       final fromUserDoc = await fromUserRef.get();
 
-      //Post
+      // Post
       final postRef = data['post'] as DocumentReference;
       if (postRef != null) {
         final postDoc = await postRef.get();
@@ -76,22 +73,22 @@ class Notif extends Equatable {
         if (postDoc.exists) {
           return Notif(
             id: doc.id,
-            type: notificationType,
+            type: notifType,
             fromUser: User.fromDocument(fromUserDoc),
             post: await Post.fromDocument(postDoc),
             date: (data['date'] as Timestamp)?.toDate(),
           );
-        } else {
-          return Notif(
-            id: doc.id,
-            type: notificationType,
-            fromUser: User.fromDocument(fromUserDoc),
-            post: null,
-            date: (data['date'] as Timestamp)?.toDate(),
-          );
         }
+      } else {
+        return Notif(
+          id: doc.id,
+          type: notifType,
+          fromUser: User.fromDocument(fromUserDoc),
+          post: null,
+          date: (data['date'] as Timestamp)?.toDate(),
+        );
       }
-      return null;
     }
+    return null;
   }
 }

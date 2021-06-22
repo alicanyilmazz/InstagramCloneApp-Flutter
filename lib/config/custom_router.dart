@@ -30,7 +30,6 @@ class CustomRouter {
   }
 
   static Route onGenerateNestedRoute(RouteSettings settings) {
-    print('Nested Route is runned.');
     switch (settings.name) {
       case ProfileScreen.routeName:
         return ProfileScreen.route(args: settings.arguments);

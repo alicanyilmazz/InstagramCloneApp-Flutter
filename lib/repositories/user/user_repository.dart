@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_sample/core/constant/enums/notification_type_enum.dart';
+import 'package:flutter_sample/models/models.dart';
 import 'package:meta/meta.dart';
 
 import '../../config/paths.dart';
@@ -51,6 +53,19 @@ class UserRepository extends BaseUserRepository {
         .collection(Paths.userFollowers)
         .doc(userId)
         .set({});
+
+    //Notifications
+    final notification = Notif(
+      type: NotificationType.follow,
+      fromUser: User.empty.copyWith(id: userId),
+      date: DateTime.now(),
+    );
+
+    _firebaseFirestore
+        .collection(Paths.notifications)
+        .doc(followUserId)
+        .collection(Paths.userNotifications)
+        .add(notification.toDocument());
   }
 
   @override
