@@ -14,13 +14,13 @@ import 'package:flutter_sample/screens/screens.dart';
 class CommentsScreenArgs {
   final Post post;
 
-  const CommentsScreenArgs({@required this.post});
+  const CommentsScreenArgs({required this.post});
 }
 
 class CommentsScreen extends StatefulWidget {
   static const String routeName = '/comments';
 
-  static Route route({@required CommentsScreenArgs args}) {
+  static Route route({required CommentsScreenArgs args}) {
     return MaterialPageRoute(
       settings: const RouteSettings(name: routeName),
       builder: (context) => BlocProvider<CommentsBloc>(
@@ -33,7 +33,7 @@ class CommentsScreen extends StatefulWidget {
     );
   }
 
-  CommentsScreen({Key key}) : super(key: key);
+  CommentsScreen({Key? key}) : super(key: key);
 
   @override
   _CommentsScreenState createState() => _CommentsScreenState();
@@ -73,7 +73,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
               return ListTile(
                 leading: UserProfileImage(
                   radius: 22.0,
-                  profileImageUrl: comment.author.profileImageUrl,
+                  profileImageUrl: comment!.author.profileImageUrl,
                 ),
                 title: Text.rich(
                   TextSpan(
