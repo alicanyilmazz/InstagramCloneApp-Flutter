@@ -6,7 +6,7 @@ import 'package:meta/meta.dart';
 import 'user_model.dart';
 
 class Comment extends Equatable {
-  final String id;
+  final String? id;
   final String postId;
   final User author;
   final String content;
@@ -14,21 +14,21 @@ class Comment extends Equatable {
 
   const Comment({
     this.id,
-    @required this.postId,
-    @required this.author,
-    @required this.content,
-    @required this.date,
+    required this.postId,
+    required this.author,
+    required this.content,
+    required this.date,
   });
 
   @override
-  List<Object> get props => [id, postId, author, content, date];
+  List<Object?> get props => [id, postId, author, content, date];
 
   Comment copyWith({
-    String id,
-    String postId,
-    User author,
-    String content,
-    DateTime date,
+    String? id,
+    String? postId,
+    User? author,
+    String? content,
+    DateTime? date,
   }) {
     return Comment(
       id: id ?? this.id,
@@ -49,10 +49,9 @@ class Comment extends Equatable {
     };
   }
 
-  static Future<Comment> fromDocument(DocumentSnapshot doc) async {
-    if (doc == null) return null;
-    final data = doc.data();
-    final authReference = data['author'] as DocumentReference;
+  static Future<Comment?> fromDocument(DocumentSnapshot doc) async {
+    final data = doc.data() as Map<String, dynamic>;
+    final authReference = data['author'] as DocumentReference?;
     if (authReference != null) {
       final authorDoc = await authReference.get();
       if (authorDoc.exists) {
@@ -61,7 +60,7 @@ class Comment extends Equatable {
           postId: data['postId'],
           author: User.fromDocument(authorDoc),
           content: data['content'],
-          date: (data['date'] as Timestamp)?.toDate(),
+          date: (data['date'] as Timestamp).toDate(),
         );
       }
     }
