@@ -15,9 +15,9 @@ class EditprofileCubit extends Cubit<EditprofileState> {
   final ProfileBloc _profileBloc;
 
   EditprofileCubit({
-    @required UserRepository userRepository,
-    @required StorageRepository storageRepository,
-    @required ProfileBloc profileBloc,
+    required UserRepository userRepository,
+    required StorageRepository storageRepository,
+    required ProfileBloc profileBloc,
   })  : _userRepository = userRepository,
         _storageRepository = storageRepository,
         _profileBloc = profileBloc,
@@ -52,7 +52,7 @@ class EditprofileCubit extends Cubit<EditprofileState> {
       var profileImageUrl = user.profileImageUrl;
       if (state.profileImage != null) {
         profileImageUrl = await _storageRepository.uploadProfileImage(
-            url: profileImageUrl, image: state.profileImage);
+            url: profileImageUrl, image: state.profileImage!);
       }
 
       final updatedUser = user.copyWith(
