@@ -10,18 +10,18 @@ import 'base_user_repository.dart';
 class UserRepository extends BaseUserRepository {
   final FirebaseFirestore _firebaseFirestore;
 
-  UserRepository({FirebaseFirestore firebaseFirestore})
+  UserRepository({FirebaseFirestore? firebaseFirestore})
       : _firebaseFirestore = firebaseFirestore ?? FirebaseFirestore.instance;
 
   @override
-  Future<User> getUserWithId({@required String userId}) async {
+  Future<User> getUserWithId({required String userId}) async {
     final doc =
         await _firebaseFirestore.collection(Paths.users).doc(userId).get();
     return doc.exists ? User.fromDocument(doc) : User.empty;
   }
 
   @override
-  Future<void> updateUser({@required User user}) async {
+  Future<void> updateUser({required User user}) async {
     await _firebaseFirestore
         .collection(Paths.users)
         .doc(user.id)
@@ -29,7 +29,7 @@ class UserRepository extends BaseUserRepository {
   }
 
   @override
-  Future<List<User>> searchUsers({@required String query}) async {
+  Future<List<User>> searchUsers({required String query}) async {
     final userSnap = await _firebaseFirestore
         .collection(Paths.users)
         .where('username', isGreaterThanOrEqualTo: query)
@@ -38,7 +38,7 @@ class UserRepository extends BaseUserRepository {
   }
 
   @override
-  void followUser({@required String userId, @required String followUserId}) {
+  void followUser({required String userId, required String followUserId}) {
     // Add followUser to users's userFollowing.
     _firebaseFirestore
         .collection(Paths.following)
@@ -70,7 +70,7 @@ class UserRepository extends BaseUserRepository {
 
   @override
   Future<bool> isFollowing(
-      {@required String userId, @required String otherUserId}) async {
+      {required String userId, required String otherUserId}) async {
     // is otherUser in user's userFollowing
     final otherUserDoc = await _firebaseFirestore
         .collection(Paths.following)
@@ -84,7 +84,7 @@ class UserRepository extends BaseUserRepository {
 
   @override
   void unfollowUser(
-      {@required String userId, @required String unfollowUserId}) {
+      {required String userId, required String unfollowUserId}) {
     //Remove unfollowUser from user's userFollowing.
     _firebaseFirestore
         .collection(Paths.following)
