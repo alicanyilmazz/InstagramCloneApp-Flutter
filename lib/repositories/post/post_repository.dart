@@ -11,17 +11,17 @@ import 'base_post_repository.dart';
 class PostRepository extends BasePostRepository {
   final FirebaseFirestore _firebaseFirestore;
 
-  PostRepository({FirebaseFirestore firebaseFirestore})
+  PostRepository({FirebaseFirestore? firebaseFirestore})
       : _firebaseFirestore = firebaseFirestore ?? FirebaseFirestore.instance;
 
   @override
-  Future<void> createPost({@required Post post}) async {
+  Future<void> createPost({required Post post}) async {
     await _firebaseFirestore.collection(Paths.posts).add(post.toDocument());
   }
 
   @override
   Future<void> createComment(
-      {@required Post post, @required Comment comment}) async {
+      {required Post post, required Comment comment}) async {
     await _firebaseFirestore
         .collection(Paths.comments)
         .doc(comment.postId)
@@ -43,7 +43,7 @@ class PostRepository extends BasePostRepository {
   }
 
   @override
-  Stream<List<Future<Post>>> getUserPosts({@required String userId}) {
+  Stream<List<Future<Post?>>> getUserPosts({required String userId}) {
     final authorReference =
         _firebaseFirestore.collection(Paths.users).doc(userId);
     return _firebaseFirestore
@@ -55,7 +55,7 @@ class PostRepository extends BasePostRepository {
   }
 
   @override
-  Stream<List<Future<Comment>>> getPostComments({@required String postId}) {
+  Stream<List<Future<Comment?>>> getPostComments({required String postId}) {
     return _firebaseFirestore
         .collection(Paths.comments)
         .doc(postId)
@@ -67,8 +67,8 @@ class PostRepository extends BasePostRepository {
   }
 
   @override
-  Future<List<Post>> getUserFeed(
-      {@required String userId, String lastPostId}) async {
+  Future<List<Post?>> getUserFeed(
+      {required String userId, String? lastPostId}) async {
     QuerySnapshot postSnap;
     if (lastPostId == null) {
       postSnap = await _firebaseFirestore
@@ -108,7 +108,7 @@ class PostRepository extends BasePostRepository {
   }
 
   @override
-  void createLike({@required Post post, @required String userId}) {
+  void createLike({required Post post, required String userId}) {
     _firebaseFirestore
         .collection(Paths.posts)
         .doc(post.id)
@@ -136,7 +136,7 @@ class PostRepository extends BasePostRepository {
   }
 
   @override
-  void deleteLike({@required String postId, @required String userId}) {
+  void deleteLike({required String postId, required String userId}) {
     _firebaseFirestore
         .collection(Paths.posts)
         .doc(postId)
@@ -152,18 +152,18 @@ class PostRepository extends BasePostRepository {
 
   @override
   Future<Set<String>> getLikedPostIds(
-      {@required String userId, @required List<Post> posts}) async {
+      {required String userId, required List<Post?> posts}) async {
     final postIds = <String>{};
     for (final post in posts) {
       final likeDoc = await _firebaseFirestore
           .collection(Paths.likes)
-          .doc(post.id)
+          .doc(post!.id)
           .collection(Paths.postLikes)
           .doc(userId)
           .get();
 
       if (likeDoc.exists) {
-        postIds.add(post.id);
+        postIds.add(post.id!);
       }
     }
     return postIds;
