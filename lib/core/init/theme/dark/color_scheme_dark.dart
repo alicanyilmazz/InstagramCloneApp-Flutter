@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ColorSchemeDark {
-  static ColorSchemeDark _instace;
-  static ColorSchemeDark get instance {
+  static ColorSchemeDark? _instace;
+  static ColorSchemeDark? get instance {
     if (_instace == null) _instace = ColorSchemeDark._init();
     return _instace;
   }

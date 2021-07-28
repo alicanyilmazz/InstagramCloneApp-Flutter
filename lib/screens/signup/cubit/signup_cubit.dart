@@ -9,7 +9,7 @@ part 'signup_state.dart';
 class SignupCubit extends Cubit<SignupState> {
   final AuthRepository _authRepository;
 
-  SignupCubit({@required AuthRepository authRepository})
+  SignupCubit({required AuthRepository authRepository})
       : _authRepository = authRepository,
         super(SignupState.initial());
 

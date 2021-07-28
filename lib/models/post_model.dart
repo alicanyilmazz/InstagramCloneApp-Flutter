@@ -5,7 +5,7 @@ import '../config/paths.dart';
 import 'user_model.dart';
 
 class Post extends Equatable {
-  final String id;
+  final String? id;
   final User author;
   final String imageUrl;
   final String caption;
@@ -14,30 +14,30 @@ class Post extends Equatable {
 
   const Post({
     this.id,
-    @required this.author,
-    @required this.imageUrl,
-    @required this.caption,
-    @required this.likes,
-    @required this.date,
+    required this.author,
+    required this.imageUrl,
+    required this.caption,
+    required this.likes,
+    required this.date,
   });
 
   @override
-  List<Object> get props => [id, author, imageUrl, caption, likes, date];
+  List<Object?> get props => [id, author, imageUrl, caption, likes, date];
 
   Post copyWith({
-    String id,
-    User author,
-    String imageUrl,
-    String caption,
-    int likes,
-    DateTime date,
+    String? id,
+    User? author,
+    String? imageUrl,
+    String? caption,
+    int? likes,
+    DateTime? date,
   }) {
     return Post(
       id: id ?? this.id,
       author: author ?? this.author,
       imageUrl: imageUrl ?? this.imageUrl,
       caption: caption ?? this.caption,
-      likes: likes ?? this.caption,
+      likes: likes ?? this.likes,
       date: date ?? this.date,
     );
   }
@@ -53,10 +53,9 @@ class Post extends Equatable {
     };
   }
 
-  static Future<Post> fromDocument(DocumentSnapshot doc) async {
-    if (doc == null) return null;
-    final data = doc.data();
-    final authorReference = data['author'] as DocumentReference;
+  static Future<Post?> fromDocument(DocumentSnapshot doc) async {
+    final data = doc.data() as Map<String, dynamic>;
+    final authorReference = data['author'] as DocumentReference?;
     if (authorReference != null) {
       final authorDoc = await authorReference.get();
       if (authorDoc.exists) {
@@ -66,7 +65,7 @@ class Post extends Equatable {
           imageUrl: data['imageUrl'] ?? '',
           caption: data['caption'] ?? '',
           likes: (data['likes'] ?? 0).toInt(),
-          date: (data['date'] as Timestamp)?.toDate(),
+          date: (data['date'] as Timestamp).toDate(),
         );
       }
     }

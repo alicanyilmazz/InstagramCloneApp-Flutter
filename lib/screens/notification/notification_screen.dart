@@ -19,15 +19,13 @@ class NotificationScreen extends StatelessWidget {
           switch (state.status) {
             case NotificationStatus.error:
               return CenteredText(text: state.failure.message);
-              break;
             case NotificationStatus.loaded:
               return ListView.builder(
                   itemCount: state.notifications.length,
                   itemBuilder: (BuildContext context, int index) {
                     final notification = state.notifications[index];
-                    return NotificationTile(notification: notification);
+                    return NotificationTile(notification: notification!);
                   });
-              break;
             default:
               return const Center(
                 child: CircularProgressIndicator(),

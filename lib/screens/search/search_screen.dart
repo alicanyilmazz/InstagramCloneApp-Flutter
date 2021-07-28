@@ -61,12 +61,10 @@ class _SearchScreenState extends State<SearchScreen> {
             switch (state.status) {
               case SearchStatus.error:
                 return CenteredText(text: state.failure.message);
-                break;
               case SearchStatus.loading:
                 return const Center(
                   child: CircularProgressIndicator(),
                 );
-                break;
               case SearchStatus.loaded:
                 return state.users.isNotEmpty
                     ? ListView.builder(
@@ -88,7 +86,6 @@ class _SearchScreenState extends State<SearchScreen> {
                           );
                         })
                     : CenteredText(text: 'No Users Found');
-                break;
               default:
                 return const SizedBox.shrink();
             }

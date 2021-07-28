@@ -74,8 +74,8 @@ class NavScren extends StatelessWidget {
   void _selectBottomNavItem(
       BuildContext context, BottomNavItem selectedItem, bool isSameItem) {
     if (isSameItem) {
-      navigatorKeys[selectedItem]
-          .currentState
+      navigatorKeys[selectedItem]!
+          .currentState!
           .popUntil((route) => route.isFirst);
     }
     context.read<BottomNavBarCubit>().updateSelectedItem(selectedItem);
@@ -85,7 +85,7 @@ class NavScren extends StatelessWidget {
     return Offstage(
       offstage: !isSelected,
       child: TabNavigator(
-        navigatorKey: navigatorKeys[currentItem],
+        navigatorKey: navigatorKeys[currentItem]!,
         item: currentItem,
       ),
     );

@@ -9,29 +9,29 @@ import 'package:flutter_sample/models/models.dart';
 import 'package:flutter_sample/models/post_model.dart';
 
 class Notif extends Equatable {
-  final String id;
+  final String? id;
   final NotificationType type;
   final User fromUser;
-  final Post post;
+  final Post? post;
   final DateTime date;
 
   const Notif({
     this.id,
-    @required this.type,
-    @required this.fromUser,
+    required this.type,
+    required this.fromUser,
     this.post,
-    @required this.date,
+    required this.date,
   });
 
   @override
-  List<Object> get props => [id, type, fromUser, post, date];
+  List<Object?> get props => [id, type, fromUser, post, date];
 
   Notif copyWith({
-    String id,
-    NotificationType type,
-    User fromUser,
-    Post post,
-    DateTime date,
+    String? id,
+    NotificationType? type,
+    User? fromUser,
+    Post? post,
+    DateTime? date,
   }) {
     return Notif(
       id: id ?? this.id,
@@ -49,24 +49,23 @@ class Notif extends Equatable {
       'fromUser':
           FirebaseFirestore.instance.collection(Paths.users).doc(fromUser.id),
       'post': post != null
-          ? FirebaseFirestore.instance.collection(Paths.posts).doc(post.id)
+          ? FirebaseFirestore.instance.collection(Paths.posts).doc(post!.id)
           : null,
       'date': Timestamp.fromDate(date),
     };
   }
 
-  static Future<Notif> fromDocument(DocumentSnapshot doc) async {
-    if (doc == null) return null;
-    final data = doc.data();
-    final notifType = EnumToString.fromString(NotificationType.values, data['type']);
+  static Future<Notif?> fromDocument(DocumentSnapshot doc) async {
+    final data = doc.data() as Map<String, dynamic>;
+    final notifType = EnumToString.fromString(NotificationType.values, data['type'])!;
 
     // From User
-    final fromUserRef = data['fromUser'] as DocumentReference;
+    final fromUserRef = data['fromUser'] as DocumentReference?;
     if (fromUserRef != null) {
       final fromUserDoc = await fromUserRef.get();
 
       // Post
-      final postRef = data['post'] as DocumentReference;
+      final postRef = data['post'] as DocumentReference?;
       if (postRef != null) {
         final postDoc = await postRef.get();
 
@@ -76,7 +75,7 @@ class Notif extends Equatable {
             type: notifType,
             fromUser: User.fromDocument(fromUserDoc),
             post: await Post.fromDocument(postDoc),
-            date: (data['date'] as Timestamp)?.toDate(),
+            date: (data['date'] as Timestamp).toDate(),
           );
         }
       } else {
@@ -85,7 +84,7 @@ class Notif extends Equatable {
           type: notifType,
           fromUser: User.fromDocument(fromUserDoc),
           post: null,
-          date: (data['date'] as Timestamp)?.toDate(),
+          date: (data['date'] as Timestamp).toDate(),
         );
       }
     }

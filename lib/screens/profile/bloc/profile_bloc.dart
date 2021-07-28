@@ -18,13 +18,13 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final AuthBloc _authBloc;
   final LikedPostsCubit _likedPostsCubit;
 
-  StreamSubscription<List<Future<Post>>> _postSubscription;
+  StreamSubscription<List<Future<Post?>>>? _postSubscription;
 
   ProfileBloc({
-    @required UserRepository userRepository,
-    @required PostRepository postRepository,
-    @required AuthBloc authBloc,
-    @required LikedPostsCubit likedPostsCubit,
+    required UserRepository userRepository,
+    required PostRepository postRepository,
+    required AuthBloc authBloc,
+    required LikedPostsCubit likedPostsCubit,
   })  : _userRepository = userRepository,
         _postRepository = postRepository,
         _authBloc = authBloc,
@@ -33,7 +33,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
   @override
   Future<void> close() {
-    _postSubscription.cancel();
+    _postSubscription?.cancel();
     return super.close();
   }
 
@@ -60,10 +60,10 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     yield state.copyWith(status: ProfileStatus.loading);
     try {
       final user = await _userRepository.getUserWithId(userId: event.userId);
-      final isCurrentUser = _authBloc.state.user.uid == event.userId;
+      final isCurrentUser = _authBloc.state.user!.uid == event.userId;
 
       final isFollowing = await _userRepository.isFollowing(
-          userId: _authBloc.state.user.uid, otherUserId: event.userId);
+          userId: _authBloc.state.user!.uid, otherUserId: event.userId);
 
       _postSubscription?.cancel();
       _postSubscription = _postRepository
@@ -96,14 +96,14 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       ProfileUpdatePosts event) async* {
     yield state.copyWith(posts: event.posts);
     final likedPostIds = await _postRepository.getLikedPostIds(
-        userId: _authBloc.state.user.uid, posts: event.posts);
+        userId: _authBloc.state.user!.uid, posts: event.posts);
     _likedPostsCubit.updateLikedPosts(postIds: likedPostIds);
   }
 
   Stream<ProfileState> _mapProfileFollowUserToState() async* {
     try {
       _userRepository.followUser(
-        userId: _authBloc.state.user.uid,
+        userId: _authBloc.state.user!.uid,
         followUserId: state.user.id,
       );
       final updateUser =
@@ -120,7 +120,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   Stream<ProfileState> _mapProfileUnfollowUserToState() async* {
     try {
       _userRepository.unfollowUser(
-        userId: _authBloc.state.user.uid,
+        userId: _authBloc.state.user!.uid,
         unfollowUserId: state.user.id,
       );
       final updateUser =

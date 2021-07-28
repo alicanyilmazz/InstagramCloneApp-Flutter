@@ -89,7 +89,7 @@ class LoginScren extends StatelessWidget {
                                   .read<LoginCubit>()
                                   .emailChanged(value.trim().toLowerCase()),
                               validator: (value) =>
-                                  !(value.trim()).contains('@')
+                                  !(value!.trim()).contains('@')
                                       ? 'Please enter a valid email.'
                                       : null,
                             ),
@@ -110,7 +110,7 @@ class LoginScren extends StatelessWidget {
                               onChanged: (value) => context
                                   .read<LoginCubit>()
                                   .passwordChanged(value.trim()),
-                              validator: (value) => value.length < 6
+                              validator: (value) => value!.length < 6
                                   ? 'Must be et least 6 characters.'
                                   : null,
                             ),
@@ -163,7 +163,7 @@ class LoginScren extends StatelessWidget {
   }
 
   _submitForm(BuildContext context, bool isSubmitting) {
-    if (_loginFormKey.currentState.validate() && !isSubmitting) {
+    if (_loginFormKey.currentState!.validate() && !isSubmitting) {
       context.read<LoginCubit>().logInWithCredentials();
     }
   }

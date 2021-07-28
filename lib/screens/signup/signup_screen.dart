@@ -87,7 +87,7 @@ class SignupScren extends StatelessWidget {
                               onChanged: (value) => context
                                   .read<SignupCubit>()
                                   .usernameChanged(value.trim().toLowerCase()),
-                              validator: (value) => value.trim().isEmpty
+                              validator: (value) => value!.trim().isEmpty
                                   ? 'Username is not empty.'
                                   : null,
                             ),
@@ -107,7 +107,7 @@ class SignupScren extends StatelessWidget {
                               onChanged: (value) => context
                                   .read<SignupCubit>()
                                   .emailChanged(value.trim().toLowerCase()),
-                              validator: (value) => !value.contains('@')
+                              validator: (value) => !value!.contains('@')
                                   ? 'Please enter a valid email.'
                                   : null,
                             ),
@@ -128,7 +128,7 @@ class SignupScren extends StatelessWidget {
                               onChanged: (value) => context
                                   .read<SignupCubit>()
                                   .passwordChanged(value.trim()),
-                              validator: (value) => value.length < 6
+                              validator: (value) => value!.length < 6
                                   ? 'Must be et least 6 characters.'
                                   : null,
                             ),
@@ -178,7 +178,7 @@ class SignupScren extends StatelessWidget {
   }
 
   _submitForm(BuildContext context, bool isSubmitting) {
-    if (_signupFormKey.currentState.validate() && !isSubmitting) {
+    if (_signupFormKey.currentState!.validate() && !isSubmitting) {
       context.read<SignupCubit>().signUpWithCredentials();
     }
   }

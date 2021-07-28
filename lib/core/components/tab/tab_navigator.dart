@@ -22,9 +22,9 @@ class TabNavigator extends StatelessWidget {
   final BottomNavItem item;
 
   const TabNavigator({
-    Key key,
-    @required this.navigatorKey,
-    @required this.item,
+    Key? key,
+    required this.navigatorKey,
+    required this.item,
   }) : super(key: key);
 
   @override
@@ -37,7 +37,7 @@ class TabNavigator extends StatelessWidget {
         return [
           MaterialPageRoute(
             settings: RouteSettings(name: tabNavigatorRoot),
-            builder: (context) => routeBuilders[initialRoute](context),
+            builder: (context) => routeBuilders[initialRoute]!(context),
           )
         ];
       },
@@ -60,14 +60,14 @@ class TabNavigator extends StatelessWidget {
           )..add(FeedFetchPosts()),
           child: FeedScreen(),
         );
-        break;
+      
       case BottomNavItem.search:
         return BlocProvider<SearchCubit>(
           create: (context) =>
               SearchCubit(userRepository: context.read<UserRepository>()),
           child: SearchScreen(),
         );
-        break;
+        
       case BottomNavItem.create:
         return BlocProvider<CreatePostCubit>(
           create: (context) => CreatePostCubit(
@@ -76,7 +76,7 @@ class TabNavigator extends StatelessWidget {
               authBloc: context.read<AuthBloc>()),
           child: CreatePostScreen(),
         );
-        break;
+       
       case BottomNavItem.notifications:
         return BlocProvider<NotificationsBloc>(
           create: (context) => NotificationsBloc(
@@ -85,7 +85,7 @@ class TabNavigator extends StatelessWidget {
           ),
           child: NotificationScreen(),
         );
-        break;
+        
       case BottomNavItem.profile:
         return BlocProvider<ProfileBloc>(
           create: (_) => ProfileBloc(
@@ -94,10 +94,10 @@ class TabNavigator extends StatelessWidget {
             likedPostsCubit: context.read<LikedPostsCubit>(),
             authBloc: context.read<AuthBloc>(),
           )..add(
-              ProfileLoadUser(userId: context.read<AuthBloc>().state.user.uid)),
+              ProfileLoadUser(userId: context.read<AuthBloc>().state.user!.uid)),
           child: ProfileScreen(),
         );
-        break;
+        
       default:
         return Scaffold();
     }

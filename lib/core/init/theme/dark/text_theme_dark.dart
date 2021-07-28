@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class TextThemeDark {
-  static TextThemeDark _instace;
-  static TextThemeDark get instance {
+  static TextThemeDark? _instace;
+  static TextThemeDark? get instance {
     if (_instace == null) _instace = TextThemeDark._init();
     return _instace;
   }

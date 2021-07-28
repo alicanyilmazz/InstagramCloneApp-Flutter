@@ -7,11 +7,11 @@ import 'package:flutter_sample/repositories/notification/base_notification_repos
 class NotificationRepository extends BaseNotificationRepository {
   final FirebaseFirestore _firebaseFirestore;
 
-  NotificationRepository({FirebaseFirestore firebaseFirestore})
+  NotificationRepository({FirebaseFirestore? firebaseFirestore})
       : _firebaseFirestore = firebaseFirestore ?? FirebaseFirestore.instance;
 
   @override
-  Stream<List<Future<Notif>>> getUserNotifications({@required String userId}) {
+  Stream<List<Future<Notif?>>> getUserNotifications({required String userId}) {
     return _firebaseFirestore
         .collection(Paths.notifications)
         .doc(userId)

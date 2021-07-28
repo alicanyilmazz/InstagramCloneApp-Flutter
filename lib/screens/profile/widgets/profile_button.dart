@@ -9,9 +9,9 @@ class ProfileButton extends StatelessWidget {
   final bool isFollowing;
 
   const ProfileButton({
-    Key key,
-    @required this.isCurrentUser,
-    @required this.isFollowing,
+    Key? key,
+    required this.isCurrentUser,
+    required this.isFollowing,
   }) : super(key: key);
 
   @override

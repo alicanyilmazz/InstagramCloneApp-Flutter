@@ -4,7 +4,7 @@ import 'app_theme.dart';
 import 'light/light_theme_interface.dart';
 
 class AppThemeLight extends AppTheme with ILightTheme {
-  static AppThemeLight _instance;
+  static AppThemeLight? _instance;
   static AppThemeLight get instance {
     return _instance ??= AppThemeLight._init();
   }
@@ -111,13 +111,13 @@ class AppThemeLight extends AppTheme with ILightTheme {
         fontStyle: FontStyle.normal,
       ),
       hintStyle: TextStyle(
-        color: colorSchemeLight.inputHintColor,
+        color: colorSchemeLight!.inputHintColor,
         fontSize: null,
         fontWeight: FontWeight.w400,
         fontStyle: FontStyle.normal,
       ),
       errorStyle: TextStyle(
-        color: colorSchemeLight.inputErrorTextColor,
+        color: colorSchemeLight!.inputErrorTextColor,
         fontSize: null,
         fontWeight: FontWeight.w400,
         fontStyle: FontStyle.normal,
@@ -148,7 +148,7 @@ class AppThemeLight extends AppTheme with ILightTheme {
       fillColor: Color(0x00000000),
       errorBorder: UnderlineInputBorder(
         borderSide: BorderSide(
-          color: colorSchemeLight.inputErrorColor,
+          color: colorSchemeLight!.inputErrorColor,
           width: 1,
           style: BorderStyle.solid,
         ),
@@ -156,7 +156,7 @@ class AppThemeLight extends AppTheme with ILightTheme {
       ),
       focusedBorder: UnderlineInputBorder(
         borderSide: BorderSide(
-          color: colorSchemeLight.inputFocusedColor,
+          color: colorSchemeLight!.inputFocusedColor,
           width: 1,
           style: BorderStyle.solid,
         ),
@@ -164,7 +164,7 @@ class AppThemeLight extends AppTheme with ILightTheme {
       ),
       focusedErrorBorder: UnderlineInputBorder(
         borderSide: BorderSide(
-          color: colorSchemeLight.inputFocusedErrorColor,
+          color: colorSchemeLight!.inputFocusedErrorColor,
           width: 1,
           style: BorderStyle.solid,
         ),
@@ -181,7 +181,7 @@ class AppThemeLight extends AppTheme with ILightTheme {
       //UnderLine Start
       enabledBorder: UnderlineInputBorder(
         borderSide: BorderSide(
-          color: colorSchemeLight.inputDefaultColor,
+          color: colorSchemeLight!.inputDefaultColor,
           width: 1,
           style: BorderStyle.solid,
         ),
@@ -202,7 +202,7 @@ class AppThemeLight extends AppTheme with ILightTheme {
     return TabBarTheme(
       labelPadding: insets.lowPaddingAll,
       labelColor: _appColorScheme.onSecondary,
-      labelStyle: textThemeLight.headline5,
+      labelStyle: textThemeLight!.headline5,
       unselectedLabelColor: _appColorScheme.onSecondary.withOpacity(0.2),
       // unselectedLabelStyle: textThemeLight.headline4.copyWith(color: colorSchemeLight.red),
     );
@@ -210,21 +210,21 @@ class AppThemeLight extends AppTheme with ILightTheme {
 
   TextTheme textTheme() {
     return ThemeData.light().textTheme.copyWith(
-        headline1: textThemeLight.headline1,
-        headline2: textThemeLight.headline2,
-        overline: textThemeLight.headline3);
+        headline1: textThemeLight!.headline1,
+        headline2: textThemeLight!.headline2,
+        overline: textThemeLight!.headline3);
   }
 
   ColorScheme get _appColorScheme {
     return ColorScheme(
-        primary: colorSchemeLight
+        primary: colorSchemeLight!
             .white, //At the same time cursor color.,button color
         primaryVariant: Colors.white, //xx
         secondary: Colors.black38,
-        secondaryVariant: colorSchemeLight.azure,
+        secondaryVariant: colorSchemeLight!.azure,
         surface: Colors.grey, //xx
         background: Color(0xfff6f9fc), //xx
-        error: Colors.red[900],
+        error: Colors.red[900]!,
         onPrimary: Colors.grey,
         onSecondary: Colors.black, //x
         onSurface: Colors.white30,

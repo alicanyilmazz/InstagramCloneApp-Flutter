@@ -11,19 +11,19 @@ class CustomRouter {
           settings: const RouteSettings(name: '/'),
           builder: (_) => const Scaffold(),
         );
-        break;
+       
       case SplashScreen.routeName:
         return SplashScreen.route();
-        break;
+        
       case LoginScren.routeName:
         return LoginScren.route();
-        break;
+        
       case NavScren.routeName:
         return NavScren.route();
-        break;
+        
       case SignupScren.routeName:
         return SignupScren.route();
-        break;
+        
       default:
         return _errorRoute();
     }
@@ -32,14 +32,14 @@ class CustomRouter {
   static Route onGenerateNestedRoute(RouteSettings settings) {
     switch (settings.name) {
       case ProfileScreen.routeName:
-        return ProfileScreen.route(args: settings.arguments);
-        break;
+        return ProfileScreen.route(args: settings.arguments as ProfileScreenArgs);
+        
       case EditProfileScreen.routeName:
-        return EditProfileScreen.route(args: settings.arguments);
-        break;
+        return EditProfileScreen.route(args: settings.arguments as EditProfileScreenArgs);
+        
          case CommentsScreen.routeName:
-        return CommentsScreen.route(args: settings.arguments);
-        break;
+        return CommentsScreen.route(args: settings.arguments as CommentsScreenArgs);
+        
       default:
         return _errorRoute();
     }

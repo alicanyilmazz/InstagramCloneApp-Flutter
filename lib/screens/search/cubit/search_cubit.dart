@@ -8,7 +8,7 @@ part 'search_state.dart';
 
 class SearchCubit extends Cubit<SearchState> {
   final UserRepository _userRepository;
-  SearchCubit({@required UserRepository userRepository})
+  SearchCubit({required UserRepository userRepository})
       : _userRepository = userRepository,
         super(SearchState.initial());
 

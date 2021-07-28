@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ScaleRotateRoute extends PageRouteBuilder {
-  final Widget page;
+  final Widget? page;
 
-  ScaleRotateRoute({RouteSettings settings, this.page})
+  ScaleRotateRoute({RouteSettings? settings, this.page})
       : super(
           settings: settings,
           pageBuilder: (
@@ -11,7 +11,7 @@ class ScaleRotateRoute extends PageRouteBuilder {
             Animation<double> animation,
             Animation<double> secondaryAnimation,
           ) =>
-              page,
+              page!,
           transitionDuration: Duration(seconds: 1),
           transitionsBuilder: (
             BuildContext context,

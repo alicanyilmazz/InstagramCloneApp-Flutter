@@ -13,7 +13,7 @@ class FeedScreen extends StatefulWidget {
 }
 
 class _FeedScreenState extends State<FeedScreen> {
-  ScrollController _scrollController;
+  late ScrollController _scrollController;
 
   @override
   void initState() {
@@ -80,12 +80,11 @@ class _FeedScreenState extends State<FeedScreen> {
         return const Center(
           child: CircularProgressIndicator(),
         );
-        break;
+       
       default:
         return RefreshIndicator(
           onRefresh: () async {
             context.read<FeedBloc>().add(FeedFetchPosts());
-            return true;
           },
           child: ListView.builder(
             controller: _scrollController,
@@ -93,7 +92,7 @@ class _FeedScreenState extends State<FeedScreen> {
             itemBuilder: (BuildContext context, int index) {
               final post = state.posts[index];
               final likedPostsState = context.watch<LikedPostsCubit>().state;
-              final isLiked = likedPostsState.likedPostIds.contains(post.id);
+              final isLiked = likedPostsState.likedPostIds.contains(post!.id);
               final recentlyliked =
                   likedPostsState.recentlyLikedPostIds.contains(post.id);
               return PostView(

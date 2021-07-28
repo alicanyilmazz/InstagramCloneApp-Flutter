@@ -15,18 +15,18 @@ import 'package:image_cropper/image_cropper.dart';
 class EditProfileScreenArgs {
   final BuildContext context;
 
-  const EditProfileScreenArgs({@required this.context});
+  const EditProfileScreenArgs({required this.context});
 }
 
 class EditProfileScreen extends StatelessWidget {
   static const String routeName = '/editProfile';
 
   EditProfileScreen({
-    Key key,
-    @required this.user,
+    Key? key,
+    required this.user,
   }) : super(key: key);
 
-  static Route route({@required EditProfileScreenArgs args}) {
+  static Route route({required EditProfileScreenArgs args}) {
     return MaterialPageRoute(
       settings: const RouteSettings(name: routeName),
       builder: (context) => BlocProvider<EditprofileCubit>(
@@ -101,7 +101,7 @@ class EditProfileScreen extends StatelessWidget {
                             onChanged: (value) => context
                                 .read<EditprofileCubit>()
                                 .usernameImageChanged(value),
-                            validator: (value) => value.trim().isEmpty
+                            validator: (value) => value!.trim().isEmpty
                                 ? 'Username not be empty!'
                                 : null,
                           ),
@@ -120,7 +120,7 @@ class EditProfileScreen extends StatelessWidget {
                             onChanged: (value) => context
                                 .read<EditprofileCubit>()
                                 .bioImageChanged(value),
-                            validator: (value) => value.trim().isEmpty
+                            validator: (value) => value!.trim().isEmpty
                                 ? 'bio not be empty!'
                                 : null,
                           ),
@@ -162,7 +162,7 @@ class EditProfileScreen extends StatelessWidget {
   }
 
   _submitForm(BuildContext context, bool isSubmitting) {
-    if (_formKey.currentState.validate() && !isSubmitting) {
+    if (_formKey.currentState!.validate() && !isSubmitting) {
       context.read<EditprofileCubit>().submit();
     }
   }

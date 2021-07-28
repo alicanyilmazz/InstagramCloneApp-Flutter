@@ -24,7 +24,7 @@ class CreatePostScreen extends StatelessWidget {
         body: BlocConsumer<CreatePostCubit, CreatePostState>(
           listener: (context, state) {
             if (state.status == CreatePostStatus.success) {
-              _formKey.currentState.reset();
+              _formKey.currentState!.reset();
               context.read<CreatePostCubit>().reset();
 
               ScaffoldMessenger.of(context).showSnackBar(
@@ -53,7 +53,7 @@ class CreatePostScreen extends StatelessWidget {
                       color: Colors.black12,
                       child: state.postImage != null
                           ? Image.file(
-                              state.postImage,
+                              state.postImage!,
                               fit: BoxFit.cover,
                             )
                           : Icon(
@@ -77,7 +77,7 @@ class CreatePostScreen extends StatelessWidget {
                               onChanged: (value) => context
                                   .read<CreatePostCubit>()
                                   .captionChanged(value),
-                              validator: (value) => value.trim().isEmpty
+                              validator: (value) => value!.trim().isEmpty
                                   ? 'Caption can not be empty'
                                   : null,
                             ),
@@ -85,7 +85,7 @@ class CreatePostScreen extends StatelessWidget {
                             ElevatedButton(
                               onPressed: () => _submitForm(
                                 context,
-                                state.postImage,
+                                state.postImage!,
                                 state.status == CreatePostStatus.submitting,
                               ),
                               child: const Text('Post'),
@@ -122,8 +122,8 @@ class CreatePostScreen extends StatelessWidget {
     }
   }
 
-  void _submitForm(BuildContext context, File postImage, bool isSubmitting) {
-    if (_formKey.currentState.validate() &&
+  void _submitForm(BuildContext context, File? postImage, bool isSubmitting) {
+    if (_formKey.currentState!.validate() &&
         postImage != null &&
         !isSubmitting) {
       context.read<CreatePostCubit>().submit();
