@@ -4,7 +4,7 @@ import 'app_theme.dart';
 import 'dark/dark_theme_interface.dart';
 
 class AppThemeDark extends AppTheme with IDarkTheme {
-  static AppThemeDark _instance;
+  static AppThemeDark? _instance;
   static AppThemeDark get instance {
     return _instance ??= AppThemeDark._init();
   }
@@ -25,7 +25,7 @@ class AppThemeDark extends AppTheme with IDarkTheme {
               // backgroundColor: Colors.pink
             ),
         inputDecorationTheme: inputDecorationThemeModern(),
-        scaffoldBackgroundColor: colorSchemeDark.modernDark,
+        scaffoldBackgroundColor: colorSchemeDark!.modernDark,
         floatingActionButtonTheme:
             ThemeData.dark().floatingActionButtonTheme.copyWith(),
         buttonTheme: ThemeData.dark().buttonTheme.copyWith(
@@ -50,7 +50,7 @@ class AppThemeDark extends AppTheme with IDarkTheme {
             selectedColor: Colors.white),
 
         dialogBackgroundColor: Color(0xffffffff),
-        cardColor: colorSchemeDark.tgo,
+        cardColor: colorSchemeDark!.tgo,
         indicatorColor: Color(0xffC20003), //XX
         hintColor: Color(0x8a000000), //xx
         errorColor: Color(0xffd32f2f),
@@ -90,7 +90,7 @@ class AppThemeDark extends AppTheme with IDarkTheme {
         fontStyle: FontStyle.normal,
       ),
       errorStyle: TextStyle(
-        color: colorSchemeDark.highRatingRed,
+        color: colorSchemeDark!.highRatingRed,
         fontSize: null,
         fontWeight: FontWeight.w400,
         fontStyle: FontStyle.normal,
@@ -174,7 +174,7 @@ class AppThemeDark extends AppTheme with IDarkTheme {
     return TabBarTheme(
       labelPadding: insets.lowPaddingAll,
       labelColor: _appColorScheme.onSecondary,
-      labelStyle: textThemeDark.headline5,
+      labelStyle: textThemeDark!.headline5,
       unselectedLabelColor: _appColorScheme.onSecondary.withOpacity(0.2),
       // unselectedLabelStyle: textThemeLight.headline4.copyWith(color: colorSchemeLight.red),
     );
@@ -182,20 +182,20 @@ class AppThemeDark extends AppTheme with IDarkTheme {
 
   TextTheme textTheme() {
     return ThemeData.dark().textTheme.copyWith(
-        headline1: textThemeDark.headline1,
-        headline2: textThemeDark.headline2,
-        overline: textThemeDark.headline3);
+        headline1: textThemeDark!.headline1,
+        headline2: textThemeDark!.headline2,
+        overline: textThemeDark!.headline3);
   }
 
   ColorScheme get _appColorScheme {
     return ColorScheme(
-        primary: colorSchemeDark.black,
+        primary: colorSchemeDark!.black,
         primaryVariant: Colors.white, //xx
         secondary: Colors.green,
-        secondaryVariant: colorSchemeDark.azure,
+        secondaryVariant: colorSchemeDark!.azure,
         surface: Colors.blue, //xx
         background: Colors.red, //xx
-        error: Colors.red[900],
+        error: Colors.red[900]!,
         onPrimary: Colors.yellow,
         onSecondary: Colors.black45, //x
         onSurface: Colors.black45,
