@@ -28,7 +28,7 @@ dependencies:
   build_runner: ^2.0.4
   cached_network_image: ^3.0.0
   cloud_firestore: ^2.2.2
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.3
   easy_localization: ^3.0.0
   enum_to_string: ^2.0.1
   equatable: ^2.0.0
