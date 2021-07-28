@@ -22,9 +22,9 @@ class TabNavigator extends StatelessWidget {
   final BottomNavItem item;
 
   const TabNavigator({
-    Key key,
-    @required this.navigatorKey,
-    @required this.item,
+    Key? key,
+    required this.navigatorKey,
+    required this.item,
   }) : super(key: key);
 
   @override
@@ -37,7 +37,7 @@ class TabNavigator extends StatelessWidget {
         return [
           MaterialPageRoute(
             settings: RouteSettings(name: tabNavigatorRoot),
-            builder: (context) => routeBuilders[initialRoute](context),
+            builder: (context) => routeBuilders[initialRoute]!(context),
           )
         ];
       },
@@ -94,7 +94,7 @@ class TabNavigator extends StatelessWidget {
             likedPostsCubit: context.read<LikedPostsCubit>(),
             authBloc: context.read<AuthBloc>(),
           )..add(
-              ProfileLoadUser(userId: context.read<AuthBloc>().state.user.uid)),
+              ProfileLoadUser(userId: context.read<AuthBloc>().state.user!.uid)),
           child: ProfileScreen(),
         );
         break;
