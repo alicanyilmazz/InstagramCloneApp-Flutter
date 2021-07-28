@@ -4,16 +4,16 @@ abstract class NotificationsEvent extends Equatable {
   const NotificationsEvent();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
 class NotificationsUpdateNotifications extends NotificationsEvent {
-  final List<Notif> notifications;
+  final List<Notif?> notifications;
 
   const NotificationsUpdateNotifications({
-    @required this.notifications,
+    required this.notifications,
   });
 
   @override
-  List<Object> get props => [notifications];
+  List<Object?> get props => [notifications];
 }

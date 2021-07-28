@@ -14,17 +14,17 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
   final NotificationRepository _notificationRepository;
   final AuthBloc _authBloc;
 
-  StreamSubscription<List<Future<Notif>>> _notificationSubscription;
+  StreamSubscription<List<Future<Notif?>>>? _notificationSubscription;
 
   NotificationsBloc({
-    @required NotificationRepository notificationRepository,
-    @required AuthBloc authBloc,
+    required NotificationRepository notificationRepository,
+    required AuthBloc authBloc,
   })  : _notificationRepository = notificationRepository,
         _authBloc = authBloc,
         super(NotificationsState.initial()) {
     _notificationSubscription?.cancel();
     _notificationSubscription = _notificationRepository
-        .getUserNotifications(userId: _authBloc.state.user.uid)
+        .getUserNotifications(userId: _authBloc.state.user!.uid)
         .listen((notifications) async {
       final allNotifications = await Future.wait(notifications);
       add(NotificationsUpdateNotifications(notifications: allNotifications));
@@ -33,7 +33,7 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
 
   @override
   Future<void> close() {
-    _notificationSubscription.cancel();
+    _notificationSubscription?.cancel();
     return super.close();
   }
 
