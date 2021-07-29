@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_sample/core/constant/enums/notification_type_enum.dart';
-import 'package:flutter_sample/models/models.dart';
+import '../../core/constant/enums/notification_type_enum.dart';
+import '../../models/models.dart';
 import 'package:meta/meta.dart';
 
 import '../../config/paths.dart';

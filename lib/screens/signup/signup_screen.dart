@@ -63,7 +63,7 @@ class SignupScren extends StatelessWidget {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             const Text(
-                              'Pharmacy Markets',
+                              'Instagram Clone',
                               style: TextStyle(
                                 fontSize: 28.0,
                                 fontWeight: FontWeight.bold,

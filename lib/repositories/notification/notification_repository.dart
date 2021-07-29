@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sample/config/paths.dart';
-import 'package:flutter_sample/models/notification_model.dart';
-import 'package:flutter_sample/repositories/notification/base_notification_repository.dart';
+import '../../config/paths.dart';
+import '../../models/notification_model.dart';
+import 'base_notification_repository.dart';
 
 class NotificationRepository extends BaseNotificationRepository {
   final FirebaseFirestore _firebaseFirestore;

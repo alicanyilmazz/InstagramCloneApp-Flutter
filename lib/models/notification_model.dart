@@ -2,11 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sample/config/paths.dart';
+import '../config/paths.dart';
 
-import 'package:flutter_sample/core/constant/enums/notification_type_enum.dart';
-import 'package:flutter_sample/models/models.dart';
-import 'package:flutter_sample/models/post_model.dart';
+import '../core/constant/enums/notification_type_enum.dart';
+import 'models.dart';
+import 'post_model.dart';
 
 class Notif extends Equatable {
   final String? id;

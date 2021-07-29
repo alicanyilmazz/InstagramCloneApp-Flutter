@@ -2,9 +2,8 @@ import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
-import '../../../blocs/blocs.dart';
 
+import '../../../blocs/blocs.dart';
 import '../../../models/failure_model.dart';
 import '../../../models/models.dart';
 import '../../../repositories/post/post_repository.dart';

@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_sample/screens/comments/comments_screen.dart';
+import '../comments/comments_screen.dart';
 import '../../core/constant/enums/app_theme_enum.dart';
 import '../../core/init/notifier/theme_notifier.dart';
 import '../../cubits/cubits.dart';

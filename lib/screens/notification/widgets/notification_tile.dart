@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sample/core/components/image/user_profile_image.dart';
-import 'package:flutter_sample/core/constant/enums/notification_type_enum.dart';
-import 'package:flutter_sample/models/models.dart';
-import 'package:flutter_sample/screens/screens.dart';
+import '../../../core/components/image/user_profile_image.dart';
+import '../../../core/constant/enums/notification_type_enum.dart';
+import '../../../models/models.dart';
+import '../../screens.dart';
 import 'package:intl/intl.dart';
 
 class NotificationTile extends StatelessWidget {

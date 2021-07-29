@@ -2,13 +2,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_sample/blocs/auth/auth_bloc.dart';
-import 'package:flutter_sample/core/components/dialog/error_dialog.dart';
-import 'package:flutter_sample/core/components/image/user_profile_image.dart';
-import 'package:flutter_sample/models/models.dart';
-import 'package:flutter_sample/repositories/post/post_repository.dart';
-import 'package:flutter_sample/screens/comments/bloc/comments_bloc.dart';
-import 'package:flutter_sample/screens/screens.dart';
+import '../../blocs/auth/auth_bloc.dart';
+import '../../core/components/dialog/error_dialog.dart';
+import '../../core/components/image/user_profile_image.dart';
+import '../../models/models.dart';
+import '../../repositories/post/post_repository.dart';
+import 'bloc/comments_bloc.dart';
+import '../screens.dart';
 
 
 class CommentsScreenArgs {

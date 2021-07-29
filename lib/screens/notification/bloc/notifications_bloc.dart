@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sample/blocs/auth/auth_bloc.dart';
-import 'package:flutter_sample/models/models.dart';
-import 'package:flutter_sample/repositories/repositories.dart';
+import '../../../blocs/auth/auth_bloc.dart';
+import '../../../models/models.dart';
+import '../../../repositories/repositories.dart';
 
 part 'notifications_event.dart';
 part 'notifications_state.dart';

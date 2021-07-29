@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
+
 import '../../../core/constant/enums/bottom_navbar_enum.dart';
 
 part 'bottom_nav_bar_state.dart';

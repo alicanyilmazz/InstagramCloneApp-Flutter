@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_sample/repositories/notification/notification_repository.dart';
-import 'package:flutter_sample/screens/notification/bloc/notifications_bloc.dart';
+import '../../../repositories/notification/notification_repository.dart';
+import '../../../screens/notification/bloc/notifications_bloc.dart';
 import '../../../cubits/cubits.dart';
 import '../../../screens/feed/bloc/feed_bloc.dart';
 import '../../../blocs/auth/auth_bloc.dart';
